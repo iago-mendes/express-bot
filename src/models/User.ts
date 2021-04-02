@@ -1,17 +1,19 @@
 import mongoose from 'mongoose'
 
+export interface Product
+{
+	id: number
+	name: string
+	quantity: number
+}
+
 export type UserType = mongoose.Document & 
 {
 	id: number
 	processedMessages: number[]
 	stage: number
 	startedAt: string // Date
-	products: Array<
-	{
-		id: number
-		name: string
-		quantity: number
-	}>
+	products: Product[]
 }
 
 const UserSchema = new mongoose.Schema(
