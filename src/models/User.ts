@@ -4,7 +4,6 @@ export interface Product
 {
 	id: number
 	name: string
-	quantity: number
 }
 
 export type UserType = mongoose.Document & 
@@ -24,7 +23,7 @@ const UserSchema = new mongoose.Schema(
 		startedAt: {type: Date, default: Date.now(), expires: 24 * 3600},
 		products:
 		[{
-			id: {type: Number, required: true, unique: true},
+			id: {type: Number, required: true},
 			name: {type: String, required: true},
 			quantity: {type: Number, required: true}
 		}]

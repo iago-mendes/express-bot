@@ -9,7 +9,7 @@ const users =
 		{
 			id: update.message.from.id,
 			processedMessages: [update.message.message_id],
-			stage: 0,
+			stage: 1,
 			products: []
 		}
 
@@ -20,7 +20,7 @@ const users =
 	{
 		const savedUser = await User.findOne({id: user.id})
 		if (!savedUser)
-			return -1
+			return 0
 
 		return savedUser.stage
 	},
@@ -55,6 +55,17 @@ const users =
 		
 		const products = savedUser.products
 		return products
+	},
+
+	removeProduct: async (user: UserInterface, productId: number) =>
+	{
+		const savedUser = await User.findOne({id: user.id})
+		if (!savedUser)
+			return
+		
+		const products = savedUser.products.filter(product => product.id !== productId)
+
+		await User.findByIdAndUpdate(savedUser._id, {products})
 	},
 
 	remove: async (user: UserInterface) =>

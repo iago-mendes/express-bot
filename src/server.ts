@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 
 import routes from './routes'
 import errorHandler from './errors/handler'
+import bot from './controllers/bot'
 
 const app = express()
 dotenv.config()
@@ -28,6 +29,7 @@ mongoose.connection
 	.once('open', () => console.log('database connected'))
 	.on('error', error => console.log('[database connection error]:', error))
 
+bot.getUpdates()
 app.use(routes)
 
 app.use(errorHandler)

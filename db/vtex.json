@@ -1,0 +1,92 @@
+{
+	"produtos": [
+		{
+			"Id": 1,
+			"Name": "Shampoo",
+			"BrandId": "Clear",
+			"Description": "Shampoo anti-caspa top",
+			"KeyWords": "Cristiano ronaldo, Anticaspa",
+			"Preco": 12.30
+		},
+		{
+			"Id": 2,
+			"Name": "Condicionador",
+			"BrandId": "Clear",
+			"Description": "Complementa o anti-caspa",
+			"KeyWords": "Cristiano ronaldo, Anticaspa",
+			"Preco": 7.4
+		},
+		{
+			"Id": 3,
+			"Name": "Creme pós-barba",
+			"BrandId": "Wood",
+			"Description": "Arde, mas ajuda",
+			"KeyWords": "madeirada, ardencia, dor",
+			"Preco": 6.4
+		},
+		{
+			"Id": 4,
+			"Name": "Finalizar para mechas",
+			"BrandId": "l'oreal",
+			"Description": "Produto caro para finalizar mechas",
+			"KeyWords": "Cabelo, saúde, haircare",
+			"Preco": 145.5
+		},
+		{
+			"Id": 5,
+			"Name": "Shampoo",
+			"BrandId": "L'oreal",
+			"Description": "Para cabelos danificados",
+			"KeyWords": "Cabelo, saúde, salão",
+			"Preco": 14.2
+		},
+		{
+			"Id": 6,
+			"Name": "Shampoo",
+			"BrandId": "L'oreal",
+			"Description": "Antiquedas",
+			"KeyWords": "Velhice, cabelos frágeis",
+			"Preco": 13.8
+		},
+		{
+			"Id": 7,
+			"Name": "Hidrante",
+			"BrandId": "Jhonson & Jhonson",
+			"Description": "Hidrata a pele como um bebê",
+			"KeyWords": "para peles ressecadas, bebê",
+			"Preco": 8.2
+		},
+		{
+			"Id": 8,
+			"Name": "Pomada modeladora",
+			"BrandId": "Natura",
+			"Description": "Fixa o cabelo para ficar como o da Dilma",
+			"KeyWords": "Dilma, Cabelo fixo, Natural",
+			"Preco": 20.3
+		},
+		{
+			"Id": 9,
+			"Name": "Óleo Hidratante",
+			"BrandId": "Advance Techniques",
+			"Description": "Tira ponta dupla que é uma maravilha",
+			"KeyWords": "Hidratação, Ponta dupla",
+			"Preco": 20.3
+		},
+		{
+			"Id": 10,
+			"Name": "Finalizador",
+			"BrandId": "Advance Techniques",
+			"Description": "Sela a cutícula e deixa o liso natural ---",
+			"KeyWords": "Liso, Cabelo, Cutícula",
+			"Preco": 14.99
+		},
+		{
+			"Id": 11,
+			"Name": "Blindagem da cor",
+			"BrandId": "Advance Techniques",
+			"Description": "Torna a cor mais resistente",
+			"KeyWords": "Cabelo, tinta, pintei",
+			"Preco": 36.2
+		}
+	]
+}
