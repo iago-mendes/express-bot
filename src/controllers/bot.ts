@@ -20,7 +20,7 @@ const bot =
 			api.post('getUpdates', data)
 				.then(res =>
 				{
-					const update = res.data.result[0]
+					const update: Update = res.data.result[0]
 					if (update)
 					{
 						offset = update.update_id + 1
@@ -32,7 +32,7 @@ const bot =
 
 						api.post('sendChatAction',
 							{
-								chat_id: update.message.chat.id,
+								chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
 								action: 'typing'
 							})
 						
@@ -41,7 +41,9 @@ const bot =
 				})
 				.catch(error =>
 				{
-					if (error.response.data.error_code !== 409)
+					if (!error.response)
+						console.error('[error]', error)
+					else if (error.response.data.error_code !== 409)
 						console.error('[error]', error.response.data)
 				})
 		}, 3*1000)
@@ -49,13 +51,16 @@ const bot =
 
 	checkStage: async (update: Update) =>
 	{
-		const user = update.message.from
-		const messageId = update.message.message_id
+		const user = update.callback_query ? update.callback_query.from : update.message.from
+		const messageId = update.callback_query ? update.callback_query.message.message_id :update.message.message_id
 
-		if (update.message.successful_payment)
+		if (update.message && update.message.successful_payment)
 			return await stages.checkout(update, user)
 		
-		const text = update.message.text.trim()
+		const text = update.callback_query
+			? update.callback_query.data
+			: update.message.text.trim()
+		
 		const hasMessageBeenProcessed = await users.hasMessageBeenProcessed(user, messageId)
 		if (hasMessageBeenProcessed)
 			return
@@ -70,18 +75,33 @@ const bot =
 			await stages.selectProducts(text, update, user)
 	},
 
-	sendMessage: async (update: Update, message: string) =>
+	sendMessage: async (update: Update, message: string, buttons?: Array<Array<{label: string, command: string}>>) =>
 	{
+		const callbackButtons = buttons
+			? buttons.map(row => (
+				row.map(({label, command}) => (
+					{
+						text: label,
+						callback_data: command
+					}))
+			))
+			: undefined
+
 		const params =
 		{
-			chat_id: update.message.chat.id,
+			chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
 			text: message,
-			parse_mode: 'HTML'
+			parse_mode: 'HTML',
+			reply_markup:
+			{
+				inline_keyboard: callbackButtons
+			}
 		}
 		await api.post('sendMessage', params)
 			.catch(error =>
 			{
-				console.error('[error when sending message]', error)
+				console.log('[callbackButtons]', callbackButtons)
+				console.error('[error when sending message]', error.response.data)
 			})
 	},
 
@@ -107,7 +127,7 @@ const bot =
 
 		await api.post('sendInvoice',
 			{
-				chat_id: update.message.chat.id,
+				chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
 				title: 'Pedido na BlitzServe',
 				description: truncateText(description, 255),
 				payload: 'payload',
@@ -121,8 +141,7 @@ const bot =
 				}],
 				photo_url: 'https://github.com/iago-mendes.png',
 				need_shipping_address: true,
-				is_flexible: true,
-				// need_phone_number: true,
+				is_flexible: true
 			})
 			.catch(error => console.error('[error while sending payment]', error.response.data))
 	},

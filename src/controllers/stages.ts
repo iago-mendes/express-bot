@@ -35,7 +35,7 @@ const stages =
 
 				await bot.sendMessage(update,
 					'Pedido finalizado com sucesso!' +
-					'\n Agora, vamos cuidar das informações financeiras, ok?'
+					'\n Agora, vamos cuidar das informações financeiras...'
 				)
 
 				const cart = await users.getCart(user)
@@ -59,8 +59,11 @@ const stages =
 
 					bot.sendMessage(update,
 						`Qual a quantidade que você deseja comprar de ${product.name}?` +
-						'\nOBS.: Digite somente números maiores que 0' +
-						'\n\nCancelar: /cancelar'
+						'\nOBS.: Digite somente números maiores que 0',
+						[[{
+							label: 'Cancelar',
+							command: '/cancelar'
+						}]]
 					)
 				}
 			}
@@ -74,8 +77,11 @@ const stages =
 
 				await bot.sendMessage(update,
 					'Produto removido com sucesso!' +
-					'\nDiga-me o nome de mais um produto que você deseja pesquisar.' +
-					'\n\n<code>Finalizar:</code> /finalizar'
+					'\nDiga-me o nome de mais um produto que você deseja pesquisar.',
+					[[{
+						label: 'Finalizar',
+						command: '/finalizar'
+					}]]
 				)
 			}
 			else
@@ -86,8 +92,11 @@ const stages =
 				if (products.length === 0)
 					return bot.sendMessage(update, 
 						'Eu não encontrei produtos com base na sua pesquisa. 😞' +
-						'\n\n Que tal pesquisar por outro produto?' +
-						'\n\n<code>Finalizar:</code> /finalizar'
+						'\n\n Que tal pesquisar por outro produto?',
+						[[{
+							label: 'Finalizar',
+							command: '/finalizar'
+						}]]
 					)
 
 				const productsDisplay = products.map((product) => (
@@ -103,8 +112,11 @@ const stages =
 				)
 
 				bot.sendMessage(update,
-					'Se você quiser pesquisar por outro produto, basta digitar que eu cuido disso para você.' +
-					'\n\n<code>Finalizar:</code> /finalizar'
+					'Se você quiser pesquisar por outro produto, basta digitar que eu cuido disso para você.',
+					[[{
+						label: 'Finalizar',
+						command: '/finalizar'
+					}]]
 				)
 			}
 		}
@@ -120,8 +132,11 @@ const stages =
 
 				return bot.sendMessage(update,
 					'Pronto... Já cancelei!' +
-					'\nSe você quiser pesquisar por outro produto, basta digitar que eu cuido disso para você.' +
-					'\n\n<code>Finalizar:</code> /finalizar'
+					'\nSe você quiser pesquisar por outro produto, basta digitar que eu cuido disso para você.',
+					[[{
+						label: 'Finalizar',
+						command: '/finalizar'
+					}]]
 				)
 			}
 
@@ -131,8 +146,11 @@ const stages =
 				return bot.sendMessage(update,
 					'Você me mandou uma quantidade inválida! Vamos tentar novamente...' +
 					`\n\nQual a quantidade que você deseja comprar de ${product.name}?` +
-					'\nOBS.: Digite somente números maiores que 0' +
-					'\n\n<code>Cancelar:</code> /cancelar'
+					'\nOBS.: Digite somente números maiores que 0',
+					[[{
+						label: 'Cancelar',
+						command: '/cancelar'
+					}]]
 				)
 
 			await users.addProduct(user, product, quantity)
@@ -143,8 +161,11 @@ const stages =
 
 			return bot.sendMessage(update,
 				'Produto adicionado com sucesso!' +
-				'\nDiga-me o nome de mais um produto que você deseja pesquisar.' +
-				'\n\n<code>Finalizar:</code> /finalizar'
+				'\nDiga-me o nome de mais um produto que você deseja pesquisar.',
+				[[{
+					label: 'Finalizar',
+					command: '/finalizar'
+				}]]
 			)
 		}
 	},

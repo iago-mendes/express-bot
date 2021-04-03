@@ -1,23 +1,32 @@
 interface Update
 {
 	update_id: number
-	message:
-	{
-		message_id: number
-		text: string
-		from: User		
-		chat:
-		{
-			id: number
-		}
-		successful_payment?:
-		{
-			currency: string
-			total_amount: number
-		}
-	}
+	message: Message
 	shipping_query?: ShippingQuery
 	pre_checkout_query?: PreCheckoutQuery
+	callback_query?:
+	{
+		id: string
+		from: User
+		data: string
+		message: Message
+	}
+}
+
+interface Message
+{
+	message_id: number
+	text: string
+	from: User		
+	chat:
+	{
+		id: number
+	}
+	successful_payment?:
+	{
+		currency: string
+		total_amount: number
+	}
 }
 
 export interface User
