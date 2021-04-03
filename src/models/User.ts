@@ -8,6 +8,8 @@ export type UserType = mongoose.Document &
 	processedMessages: number[]
 	stage: number
 	startedAt: string // Date
+	isSelectingQuantity: boolean
+	selectingProductId?: number
 	cart: Array<
 	{
 		quantity: number
@@ -21,6 +23,8 @@ const UserSchema = new mongoose.Schema(
 		processedMessages: [{type: Number, required: true}],
 		stage: {type: Number, required: true},
 		startedAt: {type: Date, default: Date.now(), expires: 24 * 3600},
+		isSelectingQuantity: {type: Boolean, required: true},
+		selectingProductId: {type: Number, required: false},
 		cart:
 		[{
 			quantity: {type: Number, required: true},

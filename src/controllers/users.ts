@@ -2,6 +2,7 @@ import Update, {User as UserInterface} from '../models/Update'
 import User from '../models/User'
 import Product from '../models/Product'
 import formatPrice from '../utils/formatPrice'
+import apiVtex from '../services/vtex/api'
 
 const users =
 {
@@ -12,6 +13,7 @@ const users =
 			id: update.message.from.id,
 			processedMessages: [update.message.message_id],
 			stage: 1,
+			isSelectingQuantity: false,
 			products: []
 		}
 
@@ -47,13 +49,13 @@ const users =
 
 		const existingIndex = cart.findIndex(item => item.product.id === newProduct.id)
 		if (existingIndex >= 0)
-			return {error: true, message: 'Você já adicionou esse produto ao seu carrinho!'}
-		
-		cart.push(
-			{
-				quantity,
-				product: newProduct
-			})
+			cart[existingIndex].quantity = quantity
+		else
+			cart.push(
+				{
+					quantity,
+					product: newProduct
+				})
 
 		await User.findByIdAndUpdate(savedUser._id, {cart})
 	},
@@ -89,8 +91,6 @@ const users =
 				`${showRemove ? '\n<code>Remover</code>: /remover_'+ product.id : ''}`
 			)
 		}).join('')
-
-		console.log('[productsDisplay]', productsDisplay)
 
 		const cartDisplay =
 		'<b>Carrinho de produtos</b>' +
@@ -135,6 +135,31 @@ const users =
 		
 		const processedMessages = savedUser.processedMessages
 		return processedMessages.includes(messageId)
+	},
+
+	isUserSelectingQuantity: async (user: UserInterface) =>
+	{
+		const savedUser = await User.findOne({id: user.id})
+		if (!savedUser)
+			return {answer: false}
+		
+		const product = apiVtex.getProduct(Number(savedUser.selectingProductId))
+		
+		return {answer: savedUser.isSelectingQuantity, product}
+	},
+
+	toggleIsUserSelectingQuantity: async (user: UserInterface, productId?: number) =>
+	{
+		const savedUser = await User.findOne({id: user.id})
+		if (!savedUser)
+			return
+		
+		const selectingProductId = productId
+			? productId
+			: savedUser.selectingProductId
+
+		const isSelectingQuantity = !savedUser.isSelectingQuantity
+		await User.findByIdAndUpdate(savedUser._id, {isSelectingQuantity, selectingProductId})
 	}
 }
 
