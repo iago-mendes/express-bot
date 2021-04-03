@@ -106,9 +106,9 @@ const users =
 		if (!savedUser)
 			return
 		
-		const products = savedUser.cart.filter(item => item.product.id !== productId)
+		const cart = savedUser.cart.filter(item => item.product.id !== productId)
 
-		await User.findByIdAndUpdate(savedUser._id, {products})
+		await User.findByIdAndUpdate(savedUser._id, {cart})
 	},
 
 	remove: async (user: UserInterface) =>
