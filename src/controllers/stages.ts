@@ -84,16 +84,17 @@ const stages =
 				const products = apiVtex.searchProducts(search)
 
 				if (products.length === 0)
-					bot.sendMessage(update, 
+					return bot.sendMessage(update, 
 						'Eu não encontrei produtos com base na sua pesquisa. 😞' +
-					'\n\n Que tal pesquisar por outro produto?'
+						'\n\n Que tal pesquisar por outro produto?' +
+						'\n\n<code>Finalizar:</code> /finalizar'
 					)
 
 				const productsDisplay = products.map((product) => (
 					`\n\n➡️ <b>${product.name} (${product.brand})</b>` +
-				`\n${product.description}` +
-				`\n${formatPrice(product.price)}` +
-				`\n<code>Selecionar:</code> /selecionar_${product.id}`
+					`\n${product.description}` +
+					`\n${formatPrice(product.price)}` +
+					`\n<code>Selecionar:</code> /selecionar_${product.id}`
 				)).join('')
 
 				await bot.sendMessage(update, 
