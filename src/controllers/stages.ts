@@ -1,26 +1,49 @@
 import Update, { User } from '../models/Update'
-import api from '../services/telegram/api'
 import apiVtex from '../services/vtex/api'
 import formatPrice from '../utils/formatPrice'
 import bot from './bot'
 import users from './users'
+import usersInfo from './usersInfo'
 
 const stages =
 {
-	welcome: async (update: Update) =>
+	welcome: async (text: string, update: Update, user: User) =>
 	{
 		await users.start(update)
-
-		const params =
+		let name = await usersInfo.getName(user.id)
+		
+		if (!name)
 		{
-			chat_id: update.message.chat.id,
-			text:
-			'🎉 Olá! Tudo bem? 🎉' +
-			'\nEu sou um bot, e estou aqui para te ajudar a realizar seu pedido.' +
-			'\n\nVamos lá... diga-me o nome de um produto que você deseja pesquisar.'
+			await usersInfo.setName(user.id, 'tmp')
+			return await bot.sendMessage(update,
+				'Olá, meu nome é Thaís e estou aqui para te ajudar a fazer compras.' +
+				'\nAntes de começarmos qual o seu nome?'
+			)
 		}
+		else
+		{
+			if (name === 'tmp')
+			{
+				await usersInfo.setName(user.id, text)
+				name = text
+			}
 
-		api.post('sendMessage', params)
+			await users.nextStage(user)
+
+			await bot.sendMessage(update,
+				`Que bom te ver por aqui, ${name}!` +
+				'\n\nAlgumas orientações para nos ajudar nesta compra:' +
+				'\n- Conversaremos só por mensagens;' +
+				'\n- Digite o nome do produto que você deseja comprar;' +
+				'\n- Clique em "selecionar" para adicionar seu produto no carrinho;' +
+				'\n- Não se esqueça de conferir nossas promoções diárias.'
+			)
+	
+			await bot.sendMessage(update,
+				'Então vamos lá!' +
+				'\nDiga-me o nome do produto que você quer pesquisar.'
+			)
+		}
 	},
 
 	selectProducts: async (text: string, update: Update, user: User) =>

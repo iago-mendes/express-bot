@@ -88,5 +88,33 @@
 			"keywords": "Cabelo, tinta, pintei",
 			"price": 36.2
 		}
+	],
+	"shippingOptions": [
+		[
+			{
+				"id": "1",
+				"title": "PAC",
+				"price": "8.2",
+				"deliveryTime": "12 dias"
+			},
+			{
+				"id": "2",
+				"title": "PAC",
+				"price": "10.3",
+				"deliveryTime": "15 dias"
+			},
+			{
+				"id": "3",
+				"title": "SEDEX",
+				"price": "14.5",
+				"deliveryTime": "6 dias"
+			},
+			{
+				"id": "4",
+				"title": "SEDEX",
+				"price": "16.4",
+				"deliveryTime": "3 dias"
+			}
+		]
 	]
 }

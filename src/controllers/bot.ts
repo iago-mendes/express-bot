@@ -53,7 +53,7 @@ const bot =
 	checkStage: async (update: Update) =>
 	{
 		const user = update.callback_query ? update.callback_query.from : update.message.from
-		const messageId = update.callback_query ? update.callback_query.message.message_id :update.message.message_id
+		const messageId = update.callback_query ? update.callback_query.message.message_id : update.message.message_id
 
 		if (update.message && update.message.successful_payment)
 			return await stages.checkout(update, user)
@@ -71,7 +71,7 @@ const bot =
 		const userStage = await users.getStage(user)
 
 		if (userStage === 0)
-			await stages.welcome(update)
+			await stages.welcome(text, update, user)
 		else if (userStage === 1)
 			await stages.selectProducts(text, update, user)
 	},

@@ -12,7 +12,7 @@ const users =
 		{
 			id: update.message.from.id,
 			processedMessages: [update.message.message_id],
-			stage: 1,
+			stage: 0,
 			isSelectingQuantity: false,
 			products: []
 		}

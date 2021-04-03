@@ -2,17 +2,6 @@ import UserInfo from '../models/UserInfo'
 
 const usersInfo =
 {
-	saveUser: async (id: number, name: string) =>
-	{
-		const user =
-		{
-			id,
-			name
-		}
-
-		await UserInfo.create(user)
-	},
-
 	getName: async (id: number) =>
 	{
 		const userInfo = await UserInfo.findOne({id})
@@ -21,6 +10,24 @@ const usersInfo =
 			return undefined
 		else
 			return userInfo.name
+	},
+
+	setName: async (id: number, name: string) =>
+	{
+		const userInfo = await UserInfo.findOne({id})
+
+		if (!userInfo)
+		{
+			const user =
+			{
+				id,
+				name
+			}
+
+			await UserInfo.create(user)
+		}
+		else
+			await UserInfo.findByIdAndUpdate(userInfo._id, {name})
 	}
 }
 
