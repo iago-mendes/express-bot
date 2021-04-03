@@ -94,26 +94,28 @@
 			{
 				"id": "1",
 				"title": "PAC",
-				"price": "8.2",
+				"price": 8.2,
 				"deliveryTime": "12 dias"
 			},
 			{
 				"id": "2",
+				"title": "SEDEX",
+				"price": 16.4,
+				"deliveryTime": "3 dias"
+			}
+		],
+		[
+			{
+				"id": "1",
 				"title": "PAC",
-				"price": "10.3",
+				"price": 10.3,
 				"deliveryTime": "15 dias"
 			},
 			{
-				"id": "3",
+				"id": "2",
 				"title": "SEDEX",
-				"price": "14.5",
+				"price": 14.5,
 				"deliveryTime": "6 dias"
-			},
-			{
-				"id": "4",
-				"title": "SEDEX",
-				"price": "16.4",
-				"deliveryTime": "3 dias"
 			}
 		]
 	]

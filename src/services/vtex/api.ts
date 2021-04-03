@@ -6,6 +6,13 @@ import Product from '../../models/Product'
 const vtex:
 {
 	products: Product[]
+	shippingOptions: Array<Array<
+	{
+		id: string
+		title: string
+		price: number
+		deliveryTime: string
+	}>>
 } = require(path.resolve('db', 'vtex.json'))
 const products = vtex.products
 
@@ -35,27 +42,20 @@ const api =
 	
 	calcularFrete: async (cep: string) =>
 	{
-		const shippingOptions =
-		[
+		const lastDigit = Number(cep[cep.length-1])
+		const index = lastDigit % 2 === 0 ? 0 : 1
+		const rawShippingOptions = vtex.shippingOptions[index]
+
+		const shippingOptions = rawShippingOptions.map(option => (
 			{
-				id: '1',
-				title: 'SEDEX (8 dias)',
+				id: option.id,
+				title: `${option.title} (${option.deliveryTime})`,
 				prices:
 				[{
 					label: 'Frete',
-					amount: 1556
+					amount: Math.round(option.price * 100)
 				}]
-			},
-			{
-				id: '2',
-				title: 'PAC (12 dias)',
-				prices:
-				[{
-					label: 'Frete',
-					amount: 756
-				}]
-			}
-		]
+			}))
 		
 		return shippingOptions
 	}
