@@ -1,5 +1,7 @@
 import Update, { User } from '../models/Update'
 import api from '../services/telegram/api'
+import apiVtex from '../services/vtex/api'
+import formatProduct from '../utils/formatProduct'
 import bot from './bot'
 import users from './users'
 
@@ -29,7 +31,7 @@ const stages =
 
 			const products = await users.getProducts(user)
 			const productsDisplay = products.map(product => (
-				`\n\n➡️ <b>${product.name}</b>` +
+				`\n\n➡️ <b>${product.name} (${product.brand})</b>` +
 				`\n<code>Remover:</code> /remover_${product.id}`
 			)).join('')
 
@@ -43,10 +45,10 @@ const stages =
 		else if (text.split('_')[0] === '/selecionar')
 		{
 			const productId = Number(text.split('_')[1])
-			// const product = getProduct(productId)
-			const product = {id: productId, name: 'Fake product'}
+			const product = apiVtex.getProduct(productId)
 
-			users.addProducts(user, [product])
+			if (product)
+				users.addProducts(user, [product])
 
 			bot.sendMessage(update, 
 				'Produto adicionado com sucesso!' +
@@ -56,28 +58,13 @@ const stages =
 		}
 		else
 		{
-			// const search = text.trim()
-			// const products = searchProducts(search)
-			const products =
-			[
-				{
-					id: 1,
-					name: 'Shampoo hidratante',
-					description: 'Shampoo hidratante da marca X',
-					price: 'R$ 9,90'
-				},
-				{
-					id: 2,
-					name: 'Condicionador Ultra Reparação',
-					description: 'Condicionador Ultra Reparação da marca X',
-					price: 'R$ 9,90'
-				}
-			]
+			const search = text.trim()
+			const products = apiVtex.searchProducts(search)
 
 			const productsDisplay = products.map((product) => (
-				`\n\n➡️ <b>${product.name}</b>` +
+				`\n\n➡️ <b>${product.name} (${product.brand})</b>` +
 				`\n${product.description}` +
-				`\n${product.price}` +
+				`\n${formatProduct(product).price}` +
 				`\n<code>Selecionar:</code> /selecionar_${product.id}`
 			)).join('')
 

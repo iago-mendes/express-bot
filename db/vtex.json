@@ -1,92 +1,92 @@
 {
-	"produtos": [
+	"products": [
 		{
-			"Id": 1,
-			"Name": "Shampoo",
-			"BrandId": "Clear",
-			"Description": "Shampoo anti-caspa top",
-			"KeyWords": "Cristiano ronaldo, Anticaspa",
-			"Preco": 12.30
+			"id": 1,
+			"name": "Shampoo",
+			"brand": "Clear",
+			"description": "Shampoo anti-caspa top",
+			"keywords": "Cristiano ronaldo, Anticaspa",
+			"price": 12.30
 		},
 		{
-			"Id": 2,
-			"Name": "Condicionador",
-			"BrandId": "Clear",
-			"Description": "Complementa o anti-caspa",
-			"KeyWords": "Cristiano ronaldo, Anticaspa",
-			"Preco": 7.4
+			"id": 2,
+			"name": "Condicionador",
+			"brand": "Clear",
+			"description": "Complementa o anti-caspa",
+			"keywords": "Cristiano ronaldo, Anticaspa",
+			"price": 7.4
 		},
 		{
-			"Id": 3,
-			"Name": "Creme pós-barba",
-			"BrandId": "Wood",
-			"Description": "Arde, mas ajuda",
-			"KeyWords": "madeirada, ardencia, dor",
-			"Preco": 6.4
+			"id": 3,
+			"name": "Creme pós-barba",
+			"brand": "Wood",
+			"description": "Arde, mas ajuda",
+			"keywords": "madeirada, ardencia, dor",
+			"price": 6.4
 		},
 		{
-			"Id": 4,
-			"Name": "Finalizar para mechas",
-			"BrandId": "l'oreal",
-			"Description": "Produto caro para finalizar mechas",
-			"KeyWords": "Cabelo, saúde, haircare",
-			"Preco": 145.5
+			"id": 4,
+			"name": "Finalizar para mechas",
+			"brand": "l'oreal",
+			"description": "Produto caro para finalizar mechas",
+			"keywords": "Cabelo, saúde, haircare",
+			"price": 145.5
 		},
 		{
-			"Id": 5,
-			"Name": "Shampoo",
-			"BrandId": "L'oreal",
-			"Description": "Para cabelos danificados",
-			"KeyWords": "Cabelo, saúde, salão",
-			"Preco": 14.2
+			"id": 5,
+			"name": "Shampoo",
+			"brand": "L'oreal",
+			"description": "Para cabelos danificados",
+			"keywords": "Cabelo, saúde, salão",
+			"price": 14.2
 		},
 		{
-			"Id": 6,
-			"Name": "Shampoo",
-			"BrandId": "L'oreal",
-			"Description": "Antiquedas",
-			"KeyWords": "Velhice, cabelos frágeis",
-			"Preco": 13.8
+			"id": 6,
+			"name": "Shampoo",
+			"brand": "L'oreal",
+			"description": "Antiquedas",
+			"keywords": "Velhice, cabelos frágeis",
+			"price": 13.8
 		},
 		{
-			"Id": 7,
-			"Name": "Hidrante",
-			"BrandId": "Jhonson & Jhonson",
-			"Description": "Hidrata a pele como um bebê",
-			"KeyWords": "para peles ressecadas, bebê",
-			"Preco": 8.2
+			"id": 7,
+			"name": "Hidrante",
+			"brand": "Jhonson & Jhonson",
+			"description": "Hidrata a pele como um bebê",
+			"keywords": "para peles ressecadas, bebê",
+			"price": 8.2
 		},
 		{
-			"Id": 8,
-			"Name": "Pomada modeladora",
-			"BrandId": "Natura",
-			"Description": "Fixa o cabelo para ficar como o da Dilma",
-			"KeyWords": "Dilma, Cabelo fixo, Natural",
-			"Preco": 20.3
+			"id": 8,
+			"name": "Pomada modeladora",
+			"brand": "Natura",
+			"description": "Fixa o cabelo para ficar como o da Dilma",
+			"keywords": "Dilma, Cabelo fixo, Natural",
+			"price": 20.3
 		},
 		{
-			"Id": 9,
-			"Name": "Óleo Hidratante",
-			"BrandId": "Advance Techniques",
-			"Description": "Tira ponta dupla que é uma maravilha",
-			"KeyWords": "Hidratação, Ponta dupla",
-			"Preco": 20.3
+			"id": 9,
+			"name": "Óleo Hidratante",
+			"brand": "Advance Techniques",
+			"description": "Tira ponta dupla que é uma maravilha",
+			"keywords": "Hidratação, Ponta dupla",
+			"price": 20.3
 		},
 		{
-			"Id": 10,
-			"Name": "Finalizador",
-			"BrandId": "Advance Techniques",
-			"Description": "Sela a cutícula e deixa o liso natural ---",
-			"KeyWords": "Liso, Cabelo, Cutícula",
-			"Preco": 14.99
+			"id": 10,
+			"name": "Finalizador",
+			"brand": "Advance Techniques",
+			"description": "Sela a cutícula e deixa o liso natural ---",
+			"keywords": "Liso, Cabelo, Cutícula",
+			"price": 14.99
 		},
 		{
-			"Id": 11,
-			"Name": "Blindagem da cor",
-			"BrandId": "Advance Techniques",
-			"Description": "Torna a cor mais resistente",
-			"KeyWords": "Cabelo, tinta, pintei",
-			"Preco": 36.2
+			"id": 11,
+			"name": "Blindagem da cor",
+			"brand": "Advance Techniques",
+			"description": "Torna a cor mais resistente",
+			"keywords": "Cabelo, tinta, pintei",
+			"price": 36.2
 		}
 	]
 }

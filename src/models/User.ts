@@ -1,10 +1,6 @@
 import mongoose from 'mongoose'
 
-export interface Product
-{
-	id: number
-	name: string
-}
+import Product from './Product'
 
 export type UserType = mongoose.Document & 
 {
@@ -25,7 +21,10 @@ const UserSchema = new mongoose.Schema(
 		[{
 			id: {type: Number, required: true},
 			name: {type: String, required: true},
-			quantity: {type: Number, required: true}
+			brand: {type: String, required: true},
+			description: {type: String, required: true},
+			keywords: {type: String, required: true},
+			price: {type: Number, required: true}
 		}]
 	})
 
