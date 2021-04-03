@@ -33,13 +33,13 @@ const stages =
 			{
 				users.nextStage(user)
 
-				const cartDisplay = await users.getCartDisplay(user)
-				await bot.sendMessage(update, cartDisplay)
-
-				bot.sendMessage(update,
+				await bot.sendMessage(update,
 					'Pedido finalizado com sucesso!' +
-				'\n\n <code>Confirmar:</code> /confirmar'
+					'\n Agora, vamos cuidar das informações financeiras, ok?'
 				)
+
+				const cart = await users.getCart(user)
+				bot.sendPayment(update, cart)
 			}
 			else if (['/selecionar', '/editar'].includes(text.split('_')[0]))
 			{
@@ -59,9 +59,24 @@ const stages =
 
 					bot.sendMessage(update,
 						`Qual a quantidade que você deseja comprar de ${product.name}?` +
-						'\nOBS.: Digite somente números maiores que 0'
+						'\nOBS.: Digite somente números maiores que 0' +
+						'\n\nCancelar: /cancelar'
 					)
 				}
+			}
+			else if (['/remover'].includes(text.split('_')[0]))
+			{
+				const productId = Number(text.split('_')[1])
+				await users.removeProduct(user, productId)
+
+				const cartDisplay = await users.getCartDisplay(user)
+				await bot.sendMessage(update, cartDisplay)
+
+				await bot.sendMessage(update,
+					'Produto removido com sucesso!' +
+					'\nDiga-me o nome de mais um produto que você deseja pesquisar.' +
+					'\n\n<code>Finalizar:</code> /finalizar'
+				)
 			}
 			else
 			{
@@ -133,30 +148,14 @@ const stages =
 		}
 	},
 
-	reviewProducts: async (text: string, update: Update, user: User) =>
+	checkout: async (update: Update, user: User) =>
 	{
-		const cartDisplay = await users.getCartDisplay(user)
-		await bot.sendMessage(update, cartDisplay)
+		users.remove(user)
 
-		if (text === '/confirmar')
-		{
-			users.remove(user)
-
-			bot.sendMessage(update,
-				'Pedido confirmado com sucesso!' +
-				'\n\n🤗 Obrigado por comprar conosco! Volte sempre!!!'
-			)
-		}
-		else if (text.split('_')[0] === '/remover')
-		{
-			const productId = Number(text.split('_')[1])
-			await users.removeProduct(user, productId)
-
-			bot.sendMessage(update,
-				'Produto removido com sucesso!' +
-				'\n\n <code>Confirmar:</code> /confirmar'
-			)
-		}
+		bot.sendMessage(update,
+			'Pedido confirmado com sucesso!' +
+			'\n\n🤗 Obrigado por comprar conosco! Volte sempre!!!'
+		)
 	}
 }
 

@@ -1,5 +1,7 @@
-import Update from '../models/Update'
+import Product from '../models/Product'
+import Update, {ShippingQuery, PreCheckoutQuery} from '../models/Update'
 import api from '../services//telegram/api'
+import truncateText from '../utils/truncateText'
 import stages from './stages'
 import users from './users'
 
@@ -23,6 +25,11 @@ const bot =
 					{
 						offset = update.update_id + 1
 
+						if (update.shipping_query)
+							return bot.sendShippingInfo(update.shipping_query)
+						if (update.pre_checkout_query)
+							return bot.confirmCheckout(update.pre_checkout_query)
+
 						api.post('sendChatAction',
 							{
 								chat_id: update.message.chat.id,
@@ -34,7 +41,8 @@ const bot =
 				})
 				.catch(error =>
 				{
-					console.error('[error]', error.response.data)
+					if (error.response.data.error_code !== 409)
+						console.error('[error]', error.response.data)
 				})
 		}, 3*1000)
 	},
@@ -43,8 +51,11 @@ const bot =
 	{
 		const user = update.message.from
 		const messageId = update.message.message_id
-		const text = update.message.text.trim()
 
+		if (update.message.successful_payment)
+			return await stages.checkout(update, user)
+		
+		const text = update.message.text.trim()
 		const hasMessageBeenProcessed = await users.hasMessageBeenProcessed(user, messageId)
 		if (hasMessageBeenProcessed)
 			return
@@ -57,8 +68,6 @@ const bot =
 			await stages.welcome(update)
 		else if (userStage === 1)
 			await stages.selectProducts(text, update, user)
-		else if (userStage === 2)
-			await stages.reviewProducts(text, update, user)
 	},
 
 	sendMessage: async (update: Update, message: string) =>
@@ -73,6 +82,73 @@ const bot =
 			.catch(error =>
 			{
 				console.error('[error when sending message]', error)
+			})
+	},
+
+	sendPayment: async (update: Update, cart: Array<{quantity: number, product: Product}>) =>
+	{
+		let totalQuantity = 0
+		let totalPrice = 0
+
+		const productsDisplay = cart.map(({quantity, product}) =>
+		{
+			totalQuantity += quantity
+			totalPrice += quantity * product.price
+
+			return (
+				`\n${quantity}x ${product.name} (${product.brand})`
+			)
+		}).join('')
+
+		const description =
+		`Quantidade total: ${totalQuantity}` +
+		'\n' +
+		productsDisplay
+
+		await api.post('sendInvoice',
+			{
+				chat_id: update.message.chat.id,
+				title: 'Pedido na BlitzServe',
+				description: truncateText(description, 255),
+				payload: 'payload',
+				provider_token: process.env.TELEGRAM_STRIPE_TOKEN,
+				start_parameter: 'vCH1vGWJxfSeofSAs0K5PA',
+				currency: 'BRL',
+				prices:
+				[{
+					label: 'Valor em produtos',
+					amount: Math.round(totalPrice * 100)
+				}],
+				photo_url: 'https://github.com/iago-mendes.png',
+				need_shipping_address: true,
+				is_flexible: true,
+				// need_phone_number: true,
+			})
+			.catch(error => console.error('[error while sending payment]', error.response.data))
+	},
+
+	sendShippingInfo: async (shippingQuery: ShippingQuery) =>
+	{
+		const shippingOptions =
+		[
+			{id: '1', title: 'Sedex', prices: [{label: 'Frete', amount: Math.round(10.56 * 100)}]},
+			{id: '2', title: 'Outra opção', prices: [{label: 'Frete', amount: Math.round(5.56 * 100)}]},
+		]
+
+		api.post('answerShippingQuery',
+			{
+				shipping_query_id: shippingQuery.id,
+				ok: true,
+				shipping_options: shippingOptions
+			})
+	},
+
+	confirmCheckout: async (preCheckoutQuery: PreCheckoutQuery) =>
+	{
+		api.post('answerPreCheckoutQuery',
+			{
+				pre_checkout_query_id: preCheckoutQuery.id,
+				ok: true
 			})
 	}
 }
