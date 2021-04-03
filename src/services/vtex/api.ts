@@ -31,6 +31,33 @@ const api =
 	{
 		const product = products.find(product => product.id === id)
 		return product
+	},
+	
+	calcularFrete: async (cep: string) =>
+	{
+		const shippingOptions =
+		[
+			{
+				id: '1',
+				title: 'SEDEX (8 dias)',
+				prices:
+				[{
+					label: 'Frete',
+					amount: 1556
+				}]
+			},
+			{
+				id: '2',
+				title: 'PAC (12 dias)',
+				prices:
+				[{
+					label: 'Frete',
+					amount: 756
+				}]
+			}
+		]
+		
+		return shippingOptions
 	}
 }
 

@@ -1,6 +1,7 @@
 import Product from '../models/Product'
 import Update, {ShippingQuery, PreCheckoutQuery} from '../models/Update'
 import api from '../services//telegram/api'
+import apiVtex from '../services/vtex/api'
 import truncateText from '../utils/truncateText'
 import stages from './stages'
 import users from './users'
@@ -148,11 +149,8 @@ const bot =
 
 	sendShippingInfo: async (shippingQuery: ShippingQuery) =>
 	{
-		const shippingOptions =
-		[
-			{id: '1', title: 'Sedex', prices: [{label: 'Frete', amount: Math.round(10.56 * 100)}]},
-			{id: '2', title: 'Outra opção', prices: [{label: 'Frete', amount: Math.round(5.56 * 100)}]},
-		]
+		const cep = shippingQuery.shipping_address.post_code
+		const shippingOptions = await apiVtex.calcularFrete(cep)
 
 		api.post('answerShippingQuery',
 			{
