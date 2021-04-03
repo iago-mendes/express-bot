@@ -140,7 +140,7 @@ const bot =
 					label: 'Valor em produtos',
 					amount: Math.round(totalPrice * 100)
 				}],
-				photo_url: 'https://github.com/iago-mendes.png',
+				photo_url: 'https://assets.blu365.com.br/uploads/sites/4/2019/01/revendedora-avon-cadastro.jpg',
 				need_shipping_address: true,
 				is_flexible: true
 			})
