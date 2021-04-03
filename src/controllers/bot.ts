@@ -22,6 +22,13 @@ const bot =
 					if (update)
 					{
 						offset = update.update_id + 1
+
+						api.post('sendChatAction',
+							{
+								chat_id: update.message.chat.id,
+								action: 'typing'
+							})
+						
 						bot.checkStage(update)
 					}
 				})

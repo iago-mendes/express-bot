@@ -48,7 +48,7 @@ const stages =
 			const cartDisplay = await users.getCartDisplay(user)
 			await bot.sendMessage(update, cartDisplay)
 
-			bot.sendMessage(update, 
+			bot.sendMessage(update,
 				'Produto adicionado com sucesso!' +
 				'\nDiga-me o nome de mais um produto que você deseja pesquisar.' +
 				'\n\n<code>Finalizar:</code> /finalizar'
