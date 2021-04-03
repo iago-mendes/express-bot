@@ -1,5 +1,7 @@
 import Update, {User as UserInterface} from '../models/Update'
-import User, {Product} from '../models/User'
+import User from '../models/User'
+import Product from '../models/Product'
+import formatPrice from '../utils/formatPrice'
 
 const users =
 {
@@ -35,26 +37,67 @@ const users =
 		}
 	},
 
-	addProducts: async (user: UserInterface, newProducts: Product[]) =>
+	addProduct: async (user: UserInterface, newProduct: Product, quantity: number) =>
 	{
 		const savedUser = await User.findOne({id: user.id})
 		if (!savedUser)
 			return
 		
-		const existingProducts = savedUser.products
-		const products = [...existingProducts, ...newProducts]
+		let cart = savedUser.cart
 
-		await User.findByIdAndUpdate(savedUser._id, {products})
+		const existingIndex = cart.findIndex(item => item.product.id === newProduct.id)
+		if (existingIndex >= 0)
+			return {error: true, message: 'Você já adicionou esse produto ao seu carrinho!'}
+		
+		cart.push(
+			{
+				quantity,
+				product: newProduct
+			})
+
+		await User.findByIdAndUpdate(savedUser._id, {cart})
 	},
 
-	getProducts: async (user: UserInterface) =>
+	getCart: async (user: UserInterface) =>
 	{
 		const savedUser = await User.findOne({id: user.id})
 		if (!savedUser)
 			return []
 		
-		const products = savedUser.products
-		return products
+		const cart = savedUser.cart
+		return cart
+	},
+
+	getCartDisplay: async (user: UserInterface, showEdit = true, showRemove = true) =>
+	{
+		const savedUser = await User.findOne({id: user.id})
+		if (!savedUser)
+			return ''
+		
+		const cart = savedUser.cart
+		let totalPrice = 0
+
+		const productsDisplay = cart.map(({quantity, product}) =>
+		{
+			totalPrice += quantity * product.price
+
+			return (
+				`\n\n➡️ ${product.name} (${product.brand})` +
+				`\n${product.description}` +
+				`\n${quantity}x ${formatPrice(product.price)}` +
+				`${showEdit ? '\n<code>Editar</code>: /editar_'+ product.id : ''}` +
+				`${showRemove ? '\n<code>Remover</code>: /remover_'+ product.id : ''}`
+			)
+		}).join('')
+
+		console.log('[productsDisplay]', productsDisplay)
+
+		const cartDisplay =
+		'<b>Carrinho de produtos</b>' +
+		`\nPreço total: ${formatPrice(totalPrice)}` +
+		productsDisplay
+
+		return cartDisplay
 	},
 
 	removeProduct: async (user: UserInterface, productId: number) =>
@@ -63,7 +106,7 @@ const users =
 		if (!savedUser)
 			return
 		
-		const products = savedUser.products.filter(product => product.id !== productId)
+		const products = savedUser.cart.filter(item => item.product.id !== productId)
 
 		await User.findByIdAndUpdate(savedUser._id, {products})
 	},

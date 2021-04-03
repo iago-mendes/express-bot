@@ -8,7 +8,11 @@ export type UserType = mongoose.Document &
 	processedMessages: number[]
 	stage: number
 	startedAt: string // Date
-	products: Product[]
+	cart: Array<
+	{
+		quantity: number
+		product: Product
+	}>
 }
 
 const UserSchema = new mongoose.Schema(
@@ -17,14 +21,18 @@ const UserSchema = new mongoose.Schema(
 		processedMessages: [{type: Number, required: true}],
 		stage: {type: Number, required: true},
 		startedAt: {type: Date, default: Date.now(), expires: 24 * 3600},
-		products:
+		cart:
 		[{
-			id: {type: Number, required: true},
-			name: {type: String, required: true},
-			brand: {type: String, required: true},
-			description: {type: String, required: true},
-			keywords: {type: String, required: true},
-			price: {type: Number, required: true}
+			quantity: {type: Number, required: true},
+			product:
+			{
+				id: {type: Number, required: true},
+				name: {type: String, required: true},
+				brand: {type: String, required: true},
+				description: {type: String, required: true},
+				keywords: {type: String, required: true},
+				price: {type: Number, required: true}
+			}
 		}]
 	})
 
