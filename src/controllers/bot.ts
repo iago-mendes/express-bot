@@ -122,14 +122,13 @@ const bot =
 			totalPrice += quantity * product.price
 
 			return (
-				`\n${quantity}x ${product.name} (${product.brand})`
+				`, ${quantity}x ${product.name} (${product.brand})`
 			)
 		}).join('')
 
 		const description =
-		`Quantidade total: ${totalQuantity}` +
-		'\n' +
-		productsDisplay
+			`${totalQuantity} produtos no total` +
+			productsDisplay
 
 		await api.post('sendInvoice',
 			{

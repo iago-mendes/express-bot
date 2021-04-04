@@ -16,8 +16,8 @@ const stages =
 		{
 			await usersInfo.setName(user.id, 'tmp')
 			return await bot.sendMessage(update,
-				'Olá, meu nome é Thaís e estou aqui para te ajudar a fazer compras.' +
-				'\nAntes de começarmos qual o seu nome?'
+				'Olá 🙋🏻‍♀️, meu nome é Thaís e estou aqui para te ajudar a fazer compras. 🛒🛍️' +
+				'\nAntes de começarmos qual o seu nome? 😁'
 			)
 		}
 		else
@@ -32,7 +32,7 @@ const stages =
 
 			await bot.sendMessage(update,
 				`Que bom te ver por aqui, ${name}!` +
-				'\n\nAlgumas orientações para nos ajudar nesta compra:' +
+				'\n\n⚠️ Algumas orientações para nos ajudar nesta compra:' +
 				'\n- Conversaremos só por mensagens;' +
 				'\n- Digite o nome do produto que você deseja comprar;' +
 				'\n- Clique em "selecionar" para adicionar seu produto no carrinho;' +
@@ -54,15 +54,36 @@ const stages =
 		{
 			if (text === '/finalizar')
 			{
-				users.nextStage(user)
-
-				await bot.sendMessage(update,
-					'Pedido finalizado com sucesso!' +
-					'\n Agora, vamos cuidar das informações financeiras...'
-				)
-
 				const cart = await users.getCart(user)
-				bot.sendPayment(update, cart)
+				
+				if (cart.length === 0)
+					await bot.sendMessage(update,
+						'O seu carrinho está vazio!' +
+						'\nSe foi um engano, você pode pesquisar por outro produto.',
+						[[
+							{label: 'Cancelar pedido', command: '/cancelar'}
+						]]
+					)
+				else
+				{
+					users.nextStage(user)
+
+					await bot.sendMessage(update,
+						'Pedido finalizado com sucesso!' +
+						'\nAgora, vamos cuidar das informações financeiras... 💰'
+					)
+
+					bot.sendPayment(update, cart)
+				}
+			}
+			else if (text === '/cancelar')
+			{
+				users.remove(user)
+				
+				await bot.sendMessage(update,
+					'Poxa... Que pena! Seu pedido foi cancelado com sucesso!' +
+					'\n\n🤗 Espero te ver por aqui em breve!!!'
+				)
 			}
 			else if (['/selecionar', '/editar'].includes(text.split('_')[0]))
 			{
@@ -72,8 +93,7 @@ const stages =
 				if (!product)
 				{
 					bot.sendMessage(update,
-						'Produto não encontrado!' +
-						'\nTente pesquisar novamente por um produto.'
+						'⚠️ Não encontrei nenhum produto com esse nome! Vamos tentar outro produto? ⚠️'
 					)
 				}
 				else
@@ -81,8 +101,9 @@ const stages =
 					await users.toggleIsUserSelectingQuantity(user, productId)
 
 					bot.sendMessage(update,
-						`Qual a quantidade que você deseja comprar de ${product.name}?` +
-						'\nOBS.: Digite somente números maiores que 0',
+						`${text.split('_')[0] === '/editar' ? 'Mudou de ideia? ' : ''}` +
+						`Qual a quantidade que você deseja comprar de ${product.name} (${product.brand})? 🤔` +
+						'\n\nOBS.: Digite somente números maiores que 0',
 						[[{
 							label: 'Cancelar',
 							command: '/cancelar'
@@ -114,8 +135,7 @@ const stages =
 
 				if (products.length === 0)
 					return bot.sendMessage(update, 
-						'Eu não encontrei produtos com base na sua pesquisa. 😞' +
-						'\n\n Que tal pesquisar por outro produto?',
+						'⚠️ Não encontrei nenhum produto com esse nome! Vamos tentar outro produto? ⚠️',
 						[[{
 							label: 'Finalizar',
 							command: '/finalizar'
@@ -184,8 +204,9 @@ const stages =
 			await bot.sendMessage(update, cartDisplay)
 
 			return bot.sendMessage(update,
-				'Produto adicionado com sucesso!' +
-				'\nDiga-me o nome de mais um produto que você deseja pesquisar.',
+				'Seu carrinho está enchendo! 🛍️' +
+				'\nDiga-me qual outro produto você deseja.' +
+				'\nSe for só isso mesmo, podemos finalizar a compra.',
 				[[{
 					label: 'Finalizar',
 					command: '/finalizar'

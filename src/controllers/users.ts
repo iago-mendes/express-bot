@@ -10,8 +10,8 @@ const users =
 	{
 		const user =
 		{
-			id: update.message.from.id,
-			processedMessages: [update.message.message_id],
+			id: update.callback_query ? update.callback_query.from.id : update.message.from.id,
+			processedMessages: [update.callback_query ? update.callback_query.message.message_id : update.message.message_id],
 			stage: 0,
 			isSelectingQuantity: false,
 			products: []
@@ -93,7 +93,7 @@ const users =
 		}).join('')
 
 		const cartDisplay =
-		'<b>Carrinho de produtos</b>' +
+		'🛒 <b>Este é o seu carrinho de compras:</b>' +
 		`\nPreço total: ${formatPrice(totalPrice)}` +
 		productsDisplay
 
