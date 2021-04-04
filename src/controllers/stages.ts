@@ -127,11 +127,12 @@ const stages =
 					`\n${product.description}` +
 					`\n${formatPrice(product.price)}` +
 					`\n<code>Selecionar:</code> /selecionar_${product.id}`
-				)).join('')
+				))
 
-				await bot.sendMessage(update, 
-					'Eu encontrei os seguintes produtos:' +
-					productsDisplay
+				await bot.sendSearchPaginated(update,
+					`Mostrando ${productsDisplay.length} resultados de produtos...`,
+					productsDisplay,
+					search
 				)
 
 				bot.sendMessage(update,

@@ -2,6 +2,7 @@ import Product from '../models/Product'
 import Update, {ShippingQuery, PreCheckoutQuery} from '../models/Update'
 import api from '../services//telegram/api'
 import apiVtex from '../services/vtex/api'
+import formatPrice from '../utils/formatPrice'
 import truncateText from '../utils/truncateText'
 import stages from './stages'
 import users from './users'
@@ -30,12 +31,6 @@ const bot =
 							return bot.sendShippingInfo(update.shipping_query)
 						if (update.pre_checkout_query)
 							return bot.confirmCheckout(update.pre_checkout_query)
-
-						api.post('sendChatAction',
-							{
-								chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
-								action: 'typing'
-							})
 						
 						bot.checkStage(update)
 					}
@@ -62,11 +57,20 @@ const bot =
 			? update.callback_query.data
 			: update.message.text.trim()
 		
+		if (['/sp'].includes(text.split('_')[0]))
+			return bot.updateSearchPaginated(update, text)
+		
 		const hasMessageBeenProcessed = await users.hasMessageBeenProcessed(user, messageId)
 		if (hasMessageBeenProcessed)
 			return
 		else
 			await users.addProcessedMessage(user, messageId)
+		
+		api.post('sendChatAction',
+			{
+				chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
+				action: 'typing'
+			})
 
 		const userStage = await users.getStage(user)
 
@@ -101,7 +105,6 @@ const bot =
 		await api.post('sendMessage', params)
 			.catch(error =>
 			{
-				console.log('[callbackButtons]', callbackButtons)
 				console.error('[error when sending message]', error.response.data)
 			})
 	},
@@ -166,6 +169,110 @@ const bot =
 			{
 				pre_checkout_query_id: preCheckoutQuery.id,
 				ok: true
+			})
+	},
+
+	sendSearchPaginated: async (update: Update, header: string, list: string[], search: string) =>
+	{
+		const pages = Math.ceil(list.length / 3)
+
+		const filteredList = pages > 1
+			? list.slice(0, 3)
+			: list
+
+		const message =
+			header +
+			filteredList.join('')
+
+		const pagination: Array<Array<{text: string, callback_data: string}>> | undefined = pages > 1
+			? [[
+				{text: '* 1 *', callback_data: `/sp_1_1_${search}`},
+				{text: '2 >', callback_data: `/sp_1_2_${search}`}
+			]]
+			: undefined
+		
+		await api.post('sendMessage',
+			{
+				chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
+				text: message,
+				parse_mode: 'HTML',
+				reply_markup:
+				{
+					inline_keyboard: pagination
+				}
+			})
+			.catch(error =>
+			{
+				console.error('[error when sending message]', error.response.data)
+			})
+	},
+
+	updateSearchPaginated: async (update: Update, data: string) =>
+	{
+		let [, previousPageString, newPageString, search] = data.split('_')
+		const previousPage = Number(previousPageString)
+		const newPage = Number(newPageString)
+
+		if (previousPage === newPage)
+			return
+
+		const products = apiVtex.searchProducts(search)
+		const list = products.map((product) => (
+			`\n\n➡️ <b>${product.name} (${product.brand})</b>` +
+			`\n${product.description}` +
+			`\n${formatPrice(product.price)}` +
+			`\n<code>Selecionar:</code> /selecionar_${product.id}`
+		))
+
+		const pages = Math.ceil(list.length / 3)
+
+		const startIndex = 3*Number(newPage-1)
+		const filteredList = startIndex + 3 < list.length-1
+			? list.slice(startIndex, startIndex + 3)
+			: list.slice(startIndex)
+
+		const message =
+			`Mostrando ${list.length} resultados de produtos...` +
+			filteredList.join('')
+
+		let pagination: Array<Array<{text: string, callback_data: string}>> | undefined = pages > 1
+			? [[]]
+			: undefined
+		
+		if (pagination)
+		{
+			if (newPage === 1)
+			{
+				pagination[0].push({text: '* 1 *', callback_data: `/sp_1_1_${search}`})
+				pagination[0].push({text: '2 >', callback_data: `/sp_1_2_${search}`})
+			}
+			else if (newPage === pages)
+			{
+				pagination[0].push({text: `< ${newPage-1}`, callback_data: `/sp_${newPage}_${newPage-1}_${search}`})
+				pagination[0].push({text: `* ${newPage} *`, callback_data: `/sp_${newPage}_${newPage}_${search}`})
+			}
+			else
+			{
+				pagination[0].push({text: `< ${newPage-1}`, callback_data: `/sp_${newPage}_${newPage-1}_${search}`})
+				pagination[0].push({text: `* ${newPage} *`, callback_data: `/sp_${newPage}_${newPage}_${search}`})
+				pagination[0].push({text: `${newPage+1} >`, callback_data: `/sp_${newPage}_${newPage+1}_${search}`})
+			}
+		}
+
+		await api.post('editMessageText',
+			{
+				chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
+				message_id: update.callback_query ? update.callback_query.message.message_id : update.message.message_id,
+				text: message,
+				parse_mode: 'HTML',
+				reply_markup:
+				{
+					inline_keyboard: pagination
+				}
+			})
+			.catch(error =>
+			{
+				console.error('[error when sending message]', error.response.data)
 			})
 	}
 }
