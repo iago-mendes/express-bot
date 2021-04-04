@@ -75,7 +75,7 @@
 		{
 			"id": 10,
 			"name": "Lápis para Sobrancelhas Avon True",
-			"description": "O lápis para sobrancelhas Avon desliza suavemente promovendo uma aplicação suave que preenche e delineia as sobrancelhas com acabamento matte e aparência natural! A escova em uma de suas pontas ajuda a pentear as sobrancelhas preenchendo e esculpindo seu formato com cor e acabamento naturais!",
+			"description": "O lápis para sobrancelhas Avon desliza suavemente promovendo uma aplicação suave que preenche e delineia as sobrancelhas com acabamento matte e aparência natural!",
 			"keywords": "Maquiagem, olhos, lapis, sombrancelha, castanho, preto",
 			"price": 19.99,
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/168698-470-470/1323879.jpg?v=637478030965300000" 
@@ -195,7 +195,7 @@
 		{
 			"id": 25,
 			"name": "Perfume Feminino Pur Blanca 75 ml",
-			"description": "Perfume Feminino Pur Blanca é uma fragrância sofisticada, que mescla a delicadeza do floral com a força e o mistério do amadeirado. Viva a experiência de estar em harmonia com o mundo ao seu redor, através da combinação delicada entre a freesia, peônia branca e madeira de Santalum. Desfrute dos momentos simples da vida com Pur Blanca. Sinta na sua pele esse sucesso da Avon!",
+			"description": "Perfume Feminino Pur Blanca é uma fragrância sofisticada, que mescla a delicadeza do floral com a força e o mistério do amadeirado.",
 			"price": 33.99,
 			"keywords": "Fragancias, feminino, perfume, branco, frasco transparente",
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/160780-470-470/Perfume_Feminino_Pur_Blanca_75_970.jpg?v=637145998521300000"
@@ -203,7 +203,7 @@
 		{
 			"id": 26,
 			"name": "Surreal Utopia 75 ml",
-			"description": "Esplêndida. Lindamente doce, a nota de baunilha é irresistível e acrescenta um conforto familiar acolhedor. A baunilha adiciona uma alegria inesquecível, fazendo você sentir que está em outro mundo experimentando um doce sonho!",
+			"description": "Esplêndida. Lindamente doce, a nota de baunilha é irresistível e acrescenta um conforto familiar acolhedor.",
 			"price": 51.90,
 			"keywords": "Fragancias, feminino, perfume, rosa, vidro rosa",
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/162114-470-470/Surreal_Utopia_75_ml_559.jpg?v=637157440273570000"
@@ -219,7 +219,7 @@
 		{
 			"id": 28,
 			"name": "Colônia Desodorante Musk Marine - 90ml",
-			"description": "é inspirada em um novo conceito de fresco. A fragrância traz a brisa do mar, a efervescência das notas cítricas na saída e a radiância de madeiras nobres numa base com nuances sensuais de âmbar e musk. Notas de saída: Bergamota, Abacaxi, Hortelã, Folhas Verdes, Gengibre, Lavanda, Cravo.",
+			"description": "A fragrância traz a brisa do mar, a efervescência das notas cítricas na saída e a radiância de madeiras nobres numa base com nuances sensuais de âmbar e musk.",
 			"price": 12.99,
 			"keywords": "Fragancias, masculino, perfume, barato, vidro azul",
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161875-470-470/Colonia_Desodorante_Musk_Marin_489.jpg?v=637146052662300000"
@@ -227,7 +227,7 @@
 		{
 			"id": 29,
 			"name": "Black Essential Intense - 100ml",
-			"description": "Seduza os sentidos com essa combinação de pimenta preta, madeiras e o exclusivo Intenso acorde. Um equilíbrio perfeito entre força masculina e sedução, que dura do dia até a noite. Contém 100ml.",
+			"description": "Seduza os sentidos com essa combinação de pimenta preta, madeiras e o exclusivo Intenso acorde.",
 			"price": 48.99,
 			"keywords": "Fragancias, masculino, perfume, preto, dourado",
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/162420-470-470/Black_Essential_Intense__100ml_818.jpg?v=637175479944270000"
@@ -235,7 +235,7 @@
 		{
 			"id": 30,
 			"name": "Colônia Desodorante Avon Spirit 100ml",
-			"description": "Colônia Desodorante Spirit traz o prazer das coisas simples da vida, a sofisticação de uma fragrância clássica em perfeita harmonia com notas modernas e atuais. Perfeito para o homem elegante, que acompanha o seu tempo.Transmite a sensação de conforto e descontração.",
+			"description": "Colônia Desodorante Spirit traz o prazer das coisas simples da vida, a sofisticação de uma fragrância clássica em perfeita harmonia com notas modernas e atuais.",
 			"price": 33.99,
 			"keywords": "Fragancias, masculino, perfume, amarelo",
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161274-470-470/Colonia_Desodorante_Avon_Spiri_273.jpg?v=637146032975830000"
@@ -243,7 +243,7 @@
 		{
 			"id": 31,
 			"name": "Colônia Homem Aranha Cartoon - 150 ml",
-			"description": "Prepare-se para um dia repleto de aventuras e muita diversão com a colônia Avon Spider-Man! Indicada para crianças a partir de 3 anos. Dermatologicamente e clinicamente testado.",
+			"description": "Prepare-se para um dia repleto de aventuras e muita diversão com a colônia Avon Spider-Man!",
 			"price": 12.99,
 			"keywords": "Fragancias, criança, perfume, homem-aranha, desenho, marvel",
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161133-470-470/Colnia_Homem_Aranha_Cartoon__1_80.jpg?v=637146018875370000"
@@ -251,7 +251,7 @@
 		{
 			"id": 32,
 			"name": "Colônia Disney Mickey Mouse & Friends - 150ml",
-			"description": "Colônia Mickey Mouse, fragrância gostosa e divertida, perfeita para meninos que gostam de brincar muito! Indicado para crianças a partir de 3 anos. Precauções: Uso externo. Inflamável. Deve ser aplicado por adulto ou com supervisão de adulto. Não usar na pele irritada ou lesionada. Em caso de irritação, suspender o uso e procurar um médico. Evite que o produto entre em contato com os olhos. Caso isso ocorra, lave com água corrente em abundância. Evite calor excessivo. Mantenha a embalagem bem fechada, longe do fogo, calor ou chama e fora do alcance de crianças quando não houver supervisão de adulto.",
+			"description": "Colônia Mickey Mouse, fragrância gostosa e divertida, perfeita para meninos que gostam de brincar muito!",
 			"price": 12.99,
 			"keywords": " Fragancias, criança, perfume, mickey mouse, desenho, disney",
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/166499-470-470/Colnia_Disney_Mickey_Mouse__Fr_969.jpg?v=637384654580000000"
@@ -259,10 +259,26 @@
 		{
 			"id": 33,
 			"name": "Colônia Care Baby - 100 ml",
-			"description": "A colônia Avon Care Baby foi especialmente desenvolvida e testada para a pele delicada do seu bebê. *Formulada sem álcool etílico. Fragrância suave que perfuma delicadamente a pele, deixando a confortável sensação de cheirinho de bebê. Produto sem corantes e livre de parabenos. Dermatologicamente testado.",
+			"description": "A colônia Avon Care Baby foi especialmente desenvolvida e testada para a pele delicada do seu bebê.",
 			"price": 22.99,
 			"keywords": "Fragancias, criança, perfume, bebe, pequeno, recém nascido",
 			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161453-470-470/Colnia_Care_Baby__100_ml_93.jpg?v=637146037644130000"
+		},
+		{
+			"id": 34,
+			"name": "Base Líquida Matte Color Trend Matte Real 25 ml",
+			"description": "A nova base Matte Real oferece uma cobertura total com acabamento matte, é a prova d'água e ajuda a disfarçar imperfeições e linhas de expressão!",
+			"price": 17.99,
+			"keywords": "liquida, cor de pele, cor, pele",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/168668-470-470/1307607.jpg?v=637477989932130000"
+		},
+		{
+			"id": 35,
+			"name": "Base Compacta 3 em 1 9 g",
+			"description": "A Base Compacta 3 em 1 da Avon combina o conforto e a praticidade de uma base cremosa, com acabamento leve como de um pó, em um só produto!",
+			"price": 41.99,
+			"keywords": "média, InvisiBlend, natural, 8, horas",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/166930-470-470/Base_Compacta_Avon_3_em_1__130_89.jpg?v=637402927385100000"
 		}
 	],
 	"shippingOptions": [
