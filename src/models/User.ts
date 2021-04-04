@@ -1,3 +1,5 @@
+// defines structure of user session stored in a mongodb database
+
 import mongoose from 'mongoose'
 
 import Product from './Product'

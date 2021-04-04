@@ -1,3 +1,5 @@
+// defines structure of user's saved info stored in a mongodb database
+
 import mongoose from 'mongoose'
 
 import Product from './Product'

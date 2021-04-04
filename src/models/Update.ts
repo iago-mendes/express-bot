@@ -1,3 +1,5 @@
+// defines structure of response received from the Telegram Bot API
+
 interface Update
 {
 	update_id: number

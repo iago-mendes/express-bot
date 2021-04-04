@@ -1,3 +1,5 @@
+// defines structure of product received from VTEX APIs
+
 interface Product
 {
 	id: number

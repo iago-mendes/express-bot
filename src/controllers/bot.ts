@@ -1,3 +1,4 @@
+// controls actions of the telegram bot
 import Product from '../models/Product'
 import Update, {ShippingQuery, PreCheckoutQuery} from '../models/Update'
 import api from '../services//telegram/api'

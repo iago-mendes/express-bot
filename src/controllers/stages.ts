@@ -1,3 +1,4 @@
+// controls stages of user session
 import Update, { User } from '../models/Update'
 import apiVtex from '../services/vtex/api'
 import formatPrice from '../utils/formatPrice'

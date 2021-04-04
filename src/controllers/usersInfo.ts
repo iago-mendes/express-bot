@@ -1,3 +1,4 @@
+// controls user's saved info
 import Product from '../models/Product'
 import UserInfo from '../models/UserInfo'
 

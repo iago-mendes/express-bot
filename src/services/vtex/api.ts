@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+// holds data that simulates communication with VTEX APIs
 import path from 'path'
 
 import Product from '../../models/Product'
@@ -13,6 +13,7 @@ const vtex:
 		price: number
 		deliveryTime: string
 	}>>
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 } = require(path.resolve('db', 'vtex.json'))
 const products = vtex.products
 

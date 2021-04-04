@@ -1,3 +1,4 @@
+// HTTP requests setup for communication with the Telegram Bot API
 import axios from 'axios'
 import dotenv from 'dotenv'
 

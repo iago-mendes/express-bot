@@ -1,3 +1,5 @@
+// truncates string variables to a limited number of characters
+
 export default function truncateText(text: string, length: number)
 {
 	let truncated = text

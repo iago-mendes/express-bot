@@ -1,3 +1,4 @@
+// controls user session
 import Update, {User as UserInterface} from '../models/Update'
 import User from '../models/User'
 import Product from '../models/Product'
