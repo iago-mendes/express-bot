@@ -93,8 +93,7 @@ const users =
 			totalPrice += quantity * product.price
 
 			return (
-				`\n\n➡️ ${product.name} (${product.brand})` +
-				`\n${product.description}` +
+				`\n\n➡️ ${product.name}` +
 				`\n${quantity}x ${formatPrice(product.price)}` +
 				`${showEdit ? '\n<code>Editar</code>: /editar_'+ product.id : ''}` +
 				`${showRemove ? '\n<code>Remover</code>: /remover_'+ product.id : ''}`

@@ -1,92 +1,268 @@
 {
-	"products": [
+	"products":[
 		{
 			"id": 1,
-			"name": "Shampoo",
-			"brand": "Clear",
-			"description": "Shampoo anti-caspa top",
-			"keywords": "Cristiano ronaldo, Anticaspa",
-			"price": 12.30
+			"name": "Pó Compacto Facial Matte FPS 35 11g - 1. Porcelana",
+			"description": "Para finalizar, garantir uma pele sem brilho e uniforme e ainda potencializar a fixação da maquiagem é indicado o uso do pó compacto.",
+			"keywords": "Porcelana, Pó, Compacto",
+			"price": 38.39,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161678-470-470/Po_Compacto_Facial_Matte_FPS_3_130.jpg?v=637146049177070000" 
 		},
 		{
 			"id": 2,
-			"name": "Condicionador",
-			"brand": "Clear",
-			"description": "Complementa o anti-caspa",
-			"keywords": "Cristiano ronaldo, Anticaspa",
-			"price": 7.4
+			"name": "Pó Compacto Facial Matte FPS 35 11g - Bege escuro",
+			"description": "Para finalizar, garantir uma pele sem brilho e uniforme e ainda potencializar a fixação da maquiagem é indicado o uso do pó compacto.",
+			"keywords": "Bege, escuro, Pó, Compacto",
+			"price": 38.39,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161684-470-470/Po_Compacto_Facial_Matte_FPS_3_211.jpg?v=637146049213370000 " 
 		},
 		{
 			"id": 3,
-			"name": "Creme pós-barba",
-			"brand": "Wood",
-			"description": "Arde, mas ajuda",
-			"keywords": "madeirada, ardencia, dor",
-			"price": 6.4
+			"name": "Pó Facial Translúcido Avon Fixador HD 9g",
+			"description": "O pó facial translúcido possui uma fórmula leve e ultrafina que promove uma textura aveludada na pele!",
+			"keywords": "Pó, Translúcido, fixador",
+			"price": 38.99,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/165110-470-470/Po_Facial_Translucido_Avon_Fix_131.jpg?v=637281676293200000" 
 		},
 		{
 			"id": 4,
-			"name": "Finalizar para mechas",
-			"brand": "l'oreal",
-			"description": "Produto caro para finalizar mechas",
-			"keywords": "Cabelo, saúde, haircare",
-			"price": 145.5
+			"name": "Base Líquida Avon Power Stay 30 ml - 410 NQ",
+			"description": "A Base Líquida Power Stay possui acabamento matte que dura por 24 horas sem sair do lugar!",
+			"keywords": "Base, power stay, 410 NQ",
+			"price": 59.99,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/167110-470-470/1389288.jpg?v=637405516722000000" 
 		},
 		{
 			"id": 5,
-			"name": "Shampoo",
-			"brand": "L'oreal",
-			"description": "Para cabelos danificados",
-			"keywords": "Cabelo, saúde, salão",
-			"price": 14.2
+			"name": "Quarteto de Sombras Metálico Matte 5g",
+			"description": "As cores podem ser usadas juntas ou separadas, criando looks e efeitos diferentes para você ficar ainda mais linda em qualquer situação.",
+			"keywords": "Maquiagem, sombra, olhos",
+			"price": 39.99,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/168347-470-470/1325409.jpg?v=637462542319530000" 
 		},
 		{
 			"id": 6,
-			"name": "Shampoo",
-			"brand": "L'oreal",
-			"description": "Antiquedas",
-			"keywords": "Velhice, cabelos frágeis",
-			"price": 13.8
+			"name": "Sombra Líquida Mattelizada 5,5g",
+			"description": "Sombra líquida com cores versáteis e brilhantes. Textura cremosa de fácil aplicação, com brilho intenso para criar looks com um glow incrível e destacar o olhar.",
+			"keywords": "Maquiagem, sombra, olhos",
+			"price": 25.59,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/168735-470-470/1392127.jpg?v=637478088953200000" 
 		},
 		{
 			"id": 7,
-			"name": "Hidrante",
-			"brand": "Jhonson & Jhonson",
-			"description": "Hidrata a pele como um bebê",
-			"keywords": "para peles ressecadas, bebê",
-			"price": 8.2
+			"name": "Paleta de Sombras Radiant Rose 17g",
+			"description": "Nesta paleta você vai encontrar as cores mais autênticas do nude ao dourado, com acabamentos matte e metálico, exclusivamente selecionadas para você criar looks originais e maravilhosos!",
+			"keywords": "Paleta, sombra, olhos, rose",
+			"price": 95.90,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/169038-470-470/Paleta_de_Sombras_Radiant_Rose_996.jpg?v=637495948550630000" 
 		},
 		{
 			"id": 8,
-			"name": "Pomada modeladora",
-			"brand": "Natura",
-			"description": "Fixa o cabelo para ficar como o da Dilma",
-			"keywords": "Dilma, Cabelo fixo, Natural",
-			"price": 20.3
+			"name": "Lápis Delineador de Longa Duração Avon 1,2g",
+			"description": "O Lápis Delineador Para Olhos de Avon possui longa duração, não tranfere ou borra e o mais incrível: á prova d'água!",
+			"keywords": "Lápis, delineador, olhos, marrom, preto, BBB",
+			"price": 21.59,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/169471-470-470/Lapis_Delineador_de_Longa_Dura_65.jpg?v=637504574425200000" 
 		},
 		{
 			"id": 9,
-			"name": "Óleo Hidratante",
-			"brand": "Advance Techniques",
-			"description": "Tira ponta dupla que é uma maravilha",
-			"keywords": "Hidratação, Ponta dupla",
-			"price": 20.3
+			"name": "Lápis para Delinear os Olhos Color Trend 1,1g",
+			"description": "O lápis para delinear os olhos Color Trend é suave na aplicação, pode ser usado como Kohl e pode ser usado na linha d'água.",
+			"keywords": "Maquiagem, olhos, lapis, azul, bege, marrom, preto",
+			"price": 7.99,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/168558-470-470/1370935.jpg?v=637475793251530000" 
 		},
 		{
 			"id": 10,
-			"name": "Finalizador",
-			"brand": "Advance Techniques",
-			"description": "Sela a cutícula e deixa o liso natural ---",
-			"keywords": "Liso, Cabelo, Cutícula",
-			"price": 14.99
+			"name": "Lápis para Sobrancelhas Avon True",
+			"description": "O lápis para sobrancelhas Avon desliza suavemente promovendo uma aplicação suave que preenche e delineia as sobrancelhas com acabamento matte e aparência natural! A escova em uma de suas pontas ajuda a pentear as sobrancelhas preenchendo e esculpindo seu formato com cor e acabamento naturais!",
+			"keywords": "Maquiagem, olhos, lapis, sombrancelha, castanho, preto",
+			"price": 19.99,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/168698-470-470/1323879.jpg?v=637478030965300000" 
 		},
 		{
 			"id": 11,
-			"name": "Blindagem da cor",
-			"brand": "Advance Techniques",
-			"description": "Torna a cor mais resistente",
-			"keywords": "Cabelo, tinta, pintei",
-			"price": 36.2
+			"name": "Delineador Líquido para Olhos 3ml",
+			"description": "Com o delineador líquido para olhos Avon tem várias possibilidades de delineado: tradicional, gatinho, geométrico ou do jeito que você quiser. Valorize seu olhar com as cores incríveis desse delineador!",
+			"keywords": "Maquiagem, olhos, delineador, azul, preto, marrom",
+			"price": 17.99,
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/168572-470-470/1383443.jpg?v=637475798102170000" 
+		},
+		{
+			"id": 12,
+			"name": "Delineador Retrátil Color Trend 350mg",
+			"description": "Lápis retrátil para facilitar um traço iluminado, prático e perfeito. Olhos delineados e iluminados.Contém 350mg.",
+			"price": 9.99,
+			"keywords": "Maquiagem, olhos, delineador, laranja, rosa, preto, verde",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161114-470-470/Delineador_Retratil_Color_Tren_402.jpg?v=637146018476630000"
+		},
+		{
+			"id": 13,
+			"name": "Mini Delineador Líquido 0,8ml",
+			"description": "Diversas cores vibrantes para escolher. Combine duas cores para um delineado mais moderno. Com aplicador de ponta precisa e formato de fácil aplicação . Cor intensa.",
+			"price": 18.99,
+			"keywords": "Maquiagem, olhos, delineador, azul, rosa, cinza, preto",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/168747-470-470/Mini_Delineador_Lquido_08ml__A_751.jpg?v=637478128271570000"
+		},
+		{
+			"id": 14,
+			"name": "Pincel para Pó Kabuki Avon",
+			"description": "O pincel Kabuki para pó da Avon é perfeito para levar com você para qualquer lugar! Ideal para finalizar a sua make, depositando a quantidade certa de produto para garantir um look incrível!",
+			"price": 29.99,
+			"keywords": "Maquiagem, acessórios, pincel, pó, nylon, alumínio",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/165108-470-470/Pincel_para_Po_Kabuki_Avon_938.jpg?v=637281675933530000"
+		},
+		{	
+			"id": 15,
+			"name": "Pincel para Sombra Avon",
+			"description": "O pincel para sombra da Avon deixa seus olhos ainda mais lindos em qualquer ocasião!",
+			"price": 16.99,
+			"keywords": "Maquiagem, acessórios, pincel, sombra, nylon, alumínio",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/165109-470-470/Pincel_para_Sombra_Avon_290.jpg?v=637281676093630000"
+		},
+		{
+			"id": 16,
+			"name": "Esmalte Ultra Cobertura e Brilho Beijo de Estação",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "Rosa, Pink, unhas, unha, color trend, juventude",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163583-470-470/Esmalte_Ultra_Cobertura_e_Bril_425.jpg?v=637209277664000000"
+		},
+		{
+			"id": 17,
+			"name": "Esmalte Ultra Cobertura e Brilho Girassol",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "Amarelo, Yellow, Color Trend, Primavera",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163671-470-470/Esmalte_Ultra_Cobertura_e_Bril_296.jpg?v=637214547380630000"
+		},
+		{
+			"id": 18,
+			"name": "Esmalte Ultra Cobertura e Brilho Neve",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "Branco, Color Trend, Neutro, Natural",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163577-470-470/Esmalte_Ultra_Cobertura_e_Bril_638.jpg?v=637209277491370000"
+		},
+		{
+			"id": 19,
+			"name": "Esmalte Ultra Cobertura e Brilho Sorriso no Rosto",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "Azul, Color Trend, Céu, Mar  ",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163581-470-470/Esmalte_Ultra_Cobertura_e_Bril_688.jpg?v=637209277606700000"
+		},
+		{
+			"id": 20,
+			"name": "Esmalte Ultra Cobertura e Brilho Mistério de Destino",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "Azul escuro, Roxo, Céu, Noite, noturno",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163578-470-470/Esmalte_Ultra_Cobertura_e_Bril_291.jpg?v=637209277522570000"
+		},
+		{
+			"id": 21,
+			"name": "Esmalte Ultra Cobertura e Brilho Verde Safra",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "Verde, Escuro, Grama, Mato, Goiás, Palmeiras",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163578-470-470/Esmalte_Ultra_Cobertura_e_Bril_291.jpg?v=637209277522570000"
+		},
+		{
+			"id": 22,
+			"name": "Esmalte Ultra Cobertura e Brilho Vinho Clássico",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "Roxo, elegante, Violeta",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163562-470-470/Esmalte_Ultra_Cobertura_e_Bril_29.jpg?v=637209277058700000"
+		},
+		{
+			"id": 23,
+			"name": "Esmalte Ultra Cobertura e Brilho Amor Subiu a Serra",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "laranja, salmão",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163676-470-470/Esmalte_Ultra_Cobertura_e_Bril_887.jpg?v=637214547530330000"
+		},
+		{
+			"id": 24,
+			"name": "Esmalte Ultra Cobertura e Brilho Preto Todes",
+			"description": "Esmalte Ultra Cobertura e brilho com fórmula 5 free, secagem em até 6 minutos e cobertura uniforme.",
+			"price": 3.69,
+			"keywords": "Dark, Noite, Elegante, Emo, Escuro",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/163565-470-470/Esmalte_Ultra_Cobertura_e_Bril_773.jpg?v=637209277151200000"
+		},
+		{
+			"id": 25,
+			"name": "Perfume Feminino Pur Blanca 75 ml",
+			"description": "Perfume Feminino Pur Blanca é uma fragrância sofisticada, que mescla a delicadeza do floral com a força e o mistério do amadeirado. Viva a experiência de estar em harmonia com o mundo ao seu redor, através da combinação delicada entre a freesia, peônia branca e madeira de Santalum. Desfrute dos momentos simples da vida com Pur Blanca. Sinta na sua pele esse sucesso da Avon!",
+			"price": 33.99,
+			"keywords": "Fragancias, feminino, perfume, branco, frasco transparente",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/160780-470-470/Perfume_Feminino_Pur_Blanca_75_970.jpg?v=637145998521300000"
+		},
+		{
+			"id": 26,
+			"name": "Surreal Utopia 75 ml",
+			"description": "Esplêndida. Lindamente doce, a nota de baunilha é irresistível e acrescenta um conforto familiar acolhedor. A baunilha adiciona uma alegria inesquecível, fazendo você sentir que está em outro mundo experimentando um doce sonho!",
+			"price": 51.90,
+			"keywords": "Fragancias, feminino, perfume, rosa, vidro rosa",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/162114-470-470/Surreal_Utopia_75_ml_559.jpg?v=637157440273570000"
+		},
+		{
+			"id": 27,
+			"name": "Deo Parfum Far Away Royale - 50ml",
+			"description": "Desperte seu glamour em toda sua intensidade.",
+			"price": 65.90,
+			"keywords": "Fragancias, feminino, perfume, realeza, vermelho, ",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/167002-470-470/Deo_Parfum_Far_Away_Royale__50_217.jpg?v=637402931666000000"
+		},
+		{
+			"id": 28,
+			"name": "Colônia Desodorante Musk Marine - 90ml",
+			"description": "é inspirada em um novo conceito de fresco. A fragrância traz a brisa do mar, a efervescência das notas cítricas na saída e a radiância de madeiras nobres numa base com nuances sensuais de âmbar e musk. Notas de saída: Bergamota, Abacaxi, Hortelã, Folhas Verdes, Gengibre, Lavanda, Cravo.",
+			"price": 12.99,
+			"keywords": "Fragancias, masculino, perfume, barato, vidro azul",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161875-470-470/Colonia_Desodorante_Musk_Marin_489.jpg?v=637146052662300000"
+		},
+		{
+			"id": 29,
+			"name": "Black Essential Intense - 100ml",
+			"description": "Seduza os sentidos com essa combinação de pimenta preta, madeiras e o exclusivo Intenso acorde. Um equilíbrio perfeito entre força masculina e sedução, que dura do dia até a noite. Contém 100ml.",
+			"price": 48.99,
+			"keywords": "Fragancias, masculino, perfume, preto, dourado",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/162420-470-470/Black_Essential_Intense__100ml_818.jpg?v=637175479944270000"
+		},
+		{
+			"id": 30,
+			"name": "Colônia Desodorante Avon Spirit 100ml",
+			"description": "Colônia Desodorante Spirit traz o prazer das coisas simples da vida, a sofisticação de uma fragrância clássica em perfeita harmonia com notas modernas e atuais. Perfeito para o homem elegante, que acompanha o seu tempo.Transmite a sensação de conforto e descontração.",
+			"price": 33.99,
+			"keywords": "Fragancias, masculino, perfume, amarelo",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161274-470-470/Colonia_Desodorante_Avon_Spiri_273.jpg?v=637146032975830000"
+		},
+		{
+			"id": 31,
+			"name": "Colônia Homem Aranha Cartoon - 150 ml",
+			"description": "Prepare-se para um dia repleto de aventuras e muita diversão com a colônia Avon Spider-Man! Indicada para crianças a partir de 3 anos. Dermatologicamente e clinicamente testado.",
+			"price": 12.99,
+			"keywords": "Fragancias, criança, perfume, homem-aranha, desenho, marvel",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161133-470-470/Colnia_Homem_Aranha_Cartoon__1_80.jpg?v=637146018875370000"
+		},
+		{
+			"id": 32,
+			"name": "Colônia Disney Mickey Mouse & Friends - 150ml",
+			"description": "Colônia Mickey Mouse, fragrância gostosa e divertida, perfeita para meninos que gostam de brincar muito! Indicado para crianças a partir de 3 anos. Precauções: Uso externo. Inflamável. Deve ser aplicado por adulto ou com supervisão de adulto. Não usar na pele irritada ou lesionada. Em caso de irritação, suspender o uso e procurar um médico. Evite que o produto entre em contato com os olhos. Caso isso ocorra, lave com água corrente em abundância. Evite calor excessivo. Mantenha a embalagem bem fechada, longe do fogo, calor ou chama e fora do alcance de crianças quando não houver supervisão de adulto.",
+			"price": 12.99,
+			"keywords": " Fragancias, criança, perfume, mickey mouse, desenho, disney",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/166499-470-470/Colnia_Disney_Mickey_Mouse__Fr_969.jpg?v=637384654580000000"
+		},
+		{
+			"id": 33,
+			"name": "Colônia Care Baby - 100 ml",
+			"description": "A colônia Avon Care Baby foi especialmente desenvolvida e testada para a pele delicada do seu bebê. *Formulada sem álcool etílico. Fragrância suave que perfuma delicadamente a pele, deixando a confortável sensação de cheirinho de bebê. Produto sem corantes e livre de parabenos. Dermatologicamente testado.",
+			"price": 22.99,
+			"keywords": "Fragancias, criança, perfume, bebe, pequeno, recém nascido",
+			"image": "https://avongroup.vteximg.com.br/arquivos/ids/161453-470-470/Colnia_Care_Baby__100_ml_93.jpg?v=637146037644130000"
 		}
 	],
 	"shippingOptions": [

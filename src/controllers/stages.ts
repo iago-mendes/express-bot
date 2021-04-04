@@ -127,7 +127,7 @@ const stages =
 
 					bot.sendMessage(update,
 						`${text.split('_')[0] === '/editar' ? 'Mudou de ideia? ' : ''}` +
-						`Qual a quantidade que você deseja comprar de ${product.name} (${product.brand})? 🤔` +
+						`Qual a quantidade que você deseja comprar de ${product.name}? 🤔` +
 						'\n\nOBS.: Digite somente números maiores que 0',
 						[[{
 							label: 'Cancelar',
@@ -136,7 +136,7 @@ const stages =
 					)
 				}
 			}
-			else if (['/remover'].includes(text.split('_')[0]))
+			else if (text.split('_')[0] === '/remover')
 			{
 				const productId = Number(text.split('_')[1])
 				await users.removeProduct(user, productId)
@@ -151,6 +151,28 @@ const stages =
 						label: 'Finalizar',
 						command: '/finalizar'
 					}]]
+				)
+			}
+			else if (text.split('_')[0] === '/imagem')
+			{
+				const productId = Number(text.split('_')[1])
+				const product = apiVtex.getProduct(productId)
+
+				if (!product)
+					return await bot.sendMessage(update, 
+						'⚠️ Não encontrei nenhum produto com esse nome! Vamos tentar outro produto? ⚠️',
+						[[{
+							label: 'Finalizar',
+							command: '/finalizar'
+						}]]
+					)
+				
+				bot.sendImage(update,
+					product.image,
+					product.name,
+					[[
+						{text: 'Selecionar produto', callback_data: `/selecionar_${product.id}`}
+					]]
 				)
 			}
 			else
@@ -168,10 +190,11 @@ const stages =
 					)
 
 				const productsDisplay = products.map((product) => (
-					`\n\n➡️ <b>${product.name} (${product.brand})</b>` +
-					`\n${product.description}` +
+					`\n\n➡️ <b>${product.name}</b>` +
 					`\n${formatPrice(product.price)}` +
-					`\n<code>Selecionar:</code> /selecionar_${product.id}`
+					`\n${product.description}` +
+					`\n<code>Selecionar:</code> /selecionar_${product.id}` +
+					`\n<code>Ver imagem:</code> /imagem_${product.id}`
 				))
 
 				await bot.sendSearchPaginated(update,
@@ -214,7 +237,7 @@ const stages =
 			if (isNaN(quantity) || quantity < 1)
 				return bot.sendMessage(update,
 					'Você me mandou uma quantidade inválida! Vamos tentar novamente...' +
-					`\nQual a quantidade que você deseja comprar de ${product.name} (${product.brand})? 🤔` +
+					`\nQual a quantidade que você deseja comprar de ${product.name}? 🤔` +
 					'\n\nOBS.: Digite somente números maiores que 0',
 					[[{
 						label: 'Cancelar',

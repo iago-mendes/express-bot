@@ -123,6 +123,32 @@ const bot =
 			})
 	},
 
+	sendImage: async (
+		update: Update,
+		url: string,
+		caption: string,
+		buttons?: Array<Array<{text: string, callback_data: string}>>
+	) =>
+	{
+		const params =
+		{
+			chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
+			photo: url,
+			caption,
+			parse_mode: 'HTML',
+			reply_markup:
+			{
+				inline_keyboard: buttons
+			}
+		}
+		
+		await api.post('sendPhoto', params)
+			.catch(error =>
+			{
+				console.error('[error when sending message]', error.response.data)
+			})
+	},
+
 	sendPayment: async (update: Update, cart: Array<{quantity: number, product: Product}>) =>
 	{
 		let totalQuantity = 0
@@ -134,7 +160,7 @@ const bot =
 			totalPrice += quantity * product.price
 
 			return (
-				`, ${quantity}x ${product.name} (${product.brand})`
+				`, ${quantity}x ${product.name}`
 			)
 		}).join('')
 
@@ -239,10 +265,11 @@ const bot =
 
 		const products = apiVtex.searchProducts(search)
 		const list = products.map((product) => (
-			`\n\n➡️ <b>${product.name} (${product.brand})</b>` +
-			`\n${product.description}` +
+			`\n\n➡️ <b>${product.name}</b>` +
 			`\n${formatPrice(product.price)}` +
-			`\n<code>Selecionar:</code> /selecionar_${product.id}`
+			`\n${product.description}` +
+			`\n<code>Selecionar:</code> /selecionar_${product.id}` +
+			`\n<code>Ver imagem:</code> /imagem_${product.id}`
 		))
 
 		const pages = Math.ceil(list.length / 3)

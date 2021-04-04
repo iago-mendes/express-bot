@@ -29,14 +29,13 @@ const api =
 				.filter(product =>
 				{
 					const searchName = product.name.toLowerCase().includes(search.toLowerCase())
-					const searchBrand = product.brand.toLowerCase().includes(search.toLowerCase())
 					const searchDescription = product.description.toLowerCase().includes(search.toLowerCase())
 					const searchKeywords = product.keywords.toLowerCase().includes(search.toLowerCase())
 
-					return searchName || searchBrand || searchDescription || searchKeywords
+					return searchName || searchDescription || searchKeywords
 				})
 		})
-		
+
 		return filteredProducts
 	},
 
