@@ -182,7 +182,7 @@ const bot =
 					label: 'Valor em produtos',
 					amount: Math.round(totalPrice * 100)
 				}],
-				photo_url: 'https://assets.blu365.com.br/uploads/sites/4/2019/01/revendedora-avon-cadastro.jpg',
+				photo_url: 'https://aexpress.iago-mendes.me/public/logo.png',
 				need_shipping_address: true,
 				is_flexible: true,
 				reply_markup:

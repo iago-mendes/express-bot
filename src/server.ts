@@ -3,8 +3,8 @@ import cors from 'cors'
 import 'express-async-errors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import path from 'path'
 
-import routes from './routes'
 import errorHandler from './errors/handler'
 import bot from './controllers/bot'
 
@@ -30,7 +30,7 @@ mongoose.connection
 	.on('error', error => console.log('[database connection error]:', error))
 
 bot.getUpdates()
-app.use(routes)
+app.use('/public', express.static(path.join(__dirname, '..', 'public')))
 
 app.use(errorHandler)
 
