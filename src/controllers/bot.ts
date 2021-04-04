@@ -268,8 +268,8 @@ const bot =
 			`\n\n➡️ <b>${product.name}</b>` +
 			`\n${formatPrice(product.price)}` +
 			`\n${truncateText(product.description, 100)}` +
-			`\n<code>Selecionar:</code> /selecionar_${product.id}` +
-			`\n<code>Ver imagem:</code> /imagem_${product.id}`
+			`\n<code>Selecionar aqui:</code> /selecionar_${product.id}` +
+			`\n<code>Ver imagem aqui:</code> /imagem_${product.id}`
 		))
 
 		const pages = Math.ceil(list.length / 3)

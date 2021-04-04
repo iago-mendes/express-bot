@@ -95,8 +95,8 @@ const users =
 			return (
 				`\n\n➡️ ${product.name}` +
 				`\n${quantity}x ${formatPrice(product.price)}` +
-				`${showEdit ? '\n<code>Editar</code>: /editar_'+ product.id : ''}` +
-				`${showRemove ? '\n<code>Remover</code>: /remover_'+ product.id : ''}`
+				`${showEdit ? '\n<code>Editar aqui</code>: /editar_'+ product.id : ''}` +
+				`${showRemove ? '\n<code>Remover aqui</code>: /remover_'+ product.id : ''}`
 			)
 		}).join('')
 
