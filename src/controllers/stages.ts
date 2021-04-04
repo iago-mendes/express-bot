@@ -1,6 +1,7 @@
 import Update, { User } from '../models/Update'
 import apiVtex from '../services/vtex/api'
 import formatPrice from '../utils/formatPrice'
+import truncateText from '../utils/truncateText'
 import bot from './bot'
 import users from './users'
 import usersInfo from './usersInfo'
@@ -192,7 +193,7 @@ const stages =
 				const productsDisplay = products.map((product) => (
 					`\n\n➡️ <b>${product.name}</b>` +
 					`\n${formatPrice(product.price)}` +
-					`\n${product.description}` +
+					`\n${truncateText(product.description, 100)}` +
 					`\n<code>Selecionar:</code> /selecionar_${product.id}` +
 					`\n<code>Ver imagem:</code> /imagem_${product.id}`
 				))
