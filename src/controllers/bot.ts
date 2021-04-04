@@ -267,7 +267,7 @@ const bot =
 		const list = products.map((product) => (
 			`\n\n➡️ <b>${product.name}</b>` +
 			`\n${formatPrice(product.price)}` +
-			`\n${product.description}` +
+			`\n${truncateText(product.description, 100)}` +
 			`\n<code>Selecionar:</code> /selecionar_${product.id}` +
 			`\n<code>Ver imagem:</code> /imagem_${product.id}`
 		))
