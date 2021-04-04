@@ -1,9 +1,9 @@
-# Express Bot :robot:
+# :robot: Express Bot
 
 ![Express Bot logo](./public/logo.png)
 
 (descrição em português disponível abaixo)
-## English description 🇺🇸
+## 🇺🇸 English description
 
 The **Express Bot** is an online seller that guides in a simple, objective, and integrated way the clients who already know which products they want to buy.
 
@@ -15,7 +15,14 @@ The **Express Bot** is an online seller that guides in a simple, objective, and 
 - [Express](https://expressjs.com)
 - [MongoDB](https://www.mongodb.com)
 
-## Descrição em português 🇧🇷
+### :iphone: Features
+
+- Personalized messages
+- Smart search
+- Image visualization
+- Checkout without redirection
+
+## 🇧🇷 Descrição em português
 
 O **Express Bot** é o vendedor online que guia de maneira simples, objetiva e integrada aqueles clientes que já sabem os produtos que desejam comprar.
 
@@ -26,3 +33,10 @@ O **Express Bot** é o vendedor online que guia de maneira simples, objetiva e i
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com)
 - [MongoDB](https://www.mongodb.com)
+
+### :iphone: Funcionalidades
+
+- Mensagens personalizadas
+- Pesquisa inteligente
+- Visualização de imagens
+- Pagamento sem redirecionamento
