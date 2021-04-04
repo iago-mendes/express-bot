@@ -51,7 +51,7 @@ const bot =
 		const messageId = update.callback_query ? update.callback_query.message.message_id : update.message.message_id
 
 		if (update.message && update.message.successful_payment)
-			return await stages.checkout('', update, user)
+			return await stages.checkout('/payed', update, user)
 		
 		const text = update.callback_query
 			? update.callback_query.data

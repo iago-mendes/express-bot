@@ -276,7 +276,7 @@ const stages =
 				'\n\n🤗 Espero te ver por aqui em breve!!!'
 			)
 		}
-		else
+		else if (text === '/payed')
 		{
 			usersInfo.setPreviousCart(user.id, cart)
 
@@ -290,7 +290,15 @@ const stages =
 				}]]
 			)
 		}
+		else
+		{
+			await bot.sendMessage(update,
+				'Operação inválida!' +
+				'\nVocê precisa selecionar uma das opções abaixo. 😉'
+			)
 
+			await bot.sendPayment(update, cart)
+		}
 	}
 }
 
