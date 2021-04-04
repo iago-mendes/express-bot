@@ -51,7 +51,7 @@ const bot =
 		const messageId = update.callback_query ? update.callback_query.message.message_id : update.message.message_id
 
 		if (update.message && update.message.successful_payment)
-			return await stages.checkout(update, user)
+			return await stages.checkout('', update, user)
 		
 		const text = update.callback_query
 			? update.callback_query.data
@@ -78,6 +78,8 @@ const bot =
 			await stages.welcome(text, update, user)
 		else if (userStage === 1)
 			await stages.selectProducts(text, update, user)
+		else if (userStage === 2)
+			await stages.checkout(text, update, user)
 	},
 
 	sendMessage: async (update: Update, message: string, buttons?: Array<Array<{label: string, command: string}>>) =>
@@ -145,7 +147,15 @@ const bot =
 				}],
 				photo_url: 'https://assets.blu365.com.br/uploads/sites/4/2019/01/revendedora-avon-cadastro.jpg',
 				need_shipping_address: true,
-				is_flexible: true
+				is_flexible: true,
+				reply_markup:
+				{
+					inline_keyboard:
+					[
+						[{text: `Pagar ${formatPrice(totalPrice)}`, pay: true}],
+						[{text: 'Cancelar pedido', callback_data: '/cancelar'}]
+					]
+				}
 			})
 			.catch(error => console.error('[error while sending payment]', error.response.data))
 	},

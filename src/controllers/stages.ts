@@ -194,14 +194,25 @@ const stages =
 		}
 	},
 
-	checkout: async (update: Update, user: User) =>
+	checkout: async (text: string, update: Update, user: User) =>
 	{
 		users.remove(user)
 
-		bot.sendMessage(update,
-			'Pedido confirmado com sucesso!' +
-			'\n\n🤗 Obrigado por comprar conosco! Volte sempre!!!'
-		)
+		if (text === '/cancelar')
+		{
+			return await bot.sendMessage(update,
+				'Poxa... Que pena! Seu pedido foi cancelado com sucesso!' +
+				'\n\n🤗 Espero te ver por aqui em breve!!!'
+			)
+		}
+		else
+		{
+			return await bot.sendMessage(update,
+				'Pedido confirmado com sucesso!' +
+				'\n\n🤗 Obrigado por comprar conosco! Volte sempre!!!'
+			)
+		}
+
 	}
 }
 
