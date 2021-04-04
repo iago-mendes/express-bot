@@ -233,7 +233,7 @@ const stages =
 				)
 			}
 
-			const quantity = Number(text)
+			const quantity = Math.round(Number(text))
 
 			if (isNaN(quantity) || quantity < 1)
 				return bot.sendMessage(update,
