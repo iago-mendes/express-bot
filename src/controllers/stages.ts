@@ -28,6 +28,8 @@ const stages =
 				name = text
 			}
 
+			const hasPreviousCart = await usersInfo.hasPreviousCart(user.id)
+
 			await users.nextStage(user)
 
 			await bot.sendMessage(update,
@@ -41,7 +43,12 @@ const stages =
 	
 			await bot.sendMessage(update,
 				'Então vamos lá!' +
-				'\nDiga-me o nome do produto que você quer pesquisar.'
+				'\nDiga-me o nome do produto que você quer pesquisar.',
+				hasPreviousCart
+					? [[
+						{label: 'Repetir última compra', command: '/ultima'}
+					]]
+					: undefined
 			)
 		}
 	},
@@ -83,6 +90,24 @@ const stages =
 				await bot.sendMessage(update,
 					'Poxa... Que pena! Seu pedido foi cancelado com sucesso!' +
 					'\n\n🤗 Espero te ver por aqui em breve!!!'
+				)
+			}
+			else if (text === '/ultima')
+			{
+				const cart = await usersInfo.getPreviousCart(user.id)
+				await users.setCart(user.id, cart)
+
+				const cartDisplay = await users.getCartDisplay(user)
+				await bot.sendMessage(update, cartDisplay)
+
+				await bot.sendMessage(update,
+					'Seu carrinho está enchendo! 🛍️' +
+					'\nDiga-me qual outro produto você deseja.' +
+					'\nSe for só isso mesmo, podemos finalizar a compra.',
+					[[{
+						label: 'Finalizar',
+						command: '/finalizar'
+					}]]
 				)
 			}
 			else if (['/selecionar', '/editar'].includes(text.split('_')[0]))
@@ -189,8 +214,8 @@ const stages =
 			if (isNaN(quantity) || quantity < 1)
 				return bot.sendMessage(update,
 					'Você me mandou uma quantidade inválida! Vamos tentar novamente...' +
-					`\n\nQual a quantidade que você deseja comprar de ${product.name}?` +
-					'\nOBS.: Digite somente números maiores que 0',
+					`\nQual a quantidade que você deseja comprar de ${product.name} (${product.brand})? 🤔` +
+					'\n\nOBS.: Digite somente números maiores que 0',
 					[[{
 						label: 'Cancelar',
 						command: '/cancelar'
@@ -217,6 +242,7 @@ const stages =
 
 	checkout: async (text: string, update: Update, user: User) =>
 	{
+		const cart = await users.getCart(user)
 		users.remove(user)
 
 		if (text === '/cancelar')
@@ -228,6 +254,8 @@ const stages =
 		}
 		else
 		{
+			usersInfo.setPreviousCart(user.id, cart)
+
 			return await bot.sendMessage(update,
 				'Pedido confirmado com sucesso!' +
 				'\n\n🤗 Obrigado por comprar conosco! Volte sempre!!!',

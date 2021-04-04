@@ -70,6 +70,15 @@ const users =
 		return cart
 	},
 
+	setCart: async (id: number, cart: Array<{quantity: number, product: Product}>) =>
+	{
+		const savedUser = await User.findOne({id})
+		if (!savedUser)
+			return
+		
+		await User.findByIdAndUpdate(savedUser._id, {cart})
+	},
+
 	getCartDisplay: async (user: UserInterface, showEdit = true, showRemove = true) =>
 	{
 		const savedUser = await User.findOne({id: user.id})
