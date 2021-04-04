@@ -82,16 +82,28 @@ const bot =
 			await stages.checkout(text, update, user)
 	},
 
-	sendMessage: async (update: Update, message: string, buttons?: Array<Array<{label: string, command: string}>>) =>
+	sendMessage: async (
+		update: Update,
+		message: string,
+		buttons?: Array<Array<{label: string, command: string, url?: string}>>
+	) =>
 	{
 		const callbackButtons = buttons
 			? buttons.map(row => (
-				row.map(({label, command}) => (
-					{
-						text: label,
-						callback_data: command
-					}))
-			))
+				row.map(({label, command, url}) =>
+				{
+					if (url)
+						return {
+							text: label,
+							url
+						}
+					else
+						return {
+							text: label,
+							callback_data: command
+						}
+				}))
+			)
 			: undefined
 
 		const params =

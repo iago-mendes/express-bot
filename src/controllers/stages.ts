@@ -79,7 +79,7 @@ const stages =
 			else if (text === '/cancelar')
 			{
 				users.remove(user)
-				
+
 				await bot.sendMessage(update,
 					'Poxa... Que pena! Seu pedido foi cancelado com sucesso!' +
 					'\n\n🤗 Espero te ver por aqui em breve!!!'
@@ -230,7 +230,12 @@ const stages =
 		{
 			return await bot.sendMessage(update,
 				'Pedido confirmado com sucesso!' +
-				'\n\n🤗 Obrigado por comprar conosco! Volte sempre!!!'
+				'\n\n🤗 Obrigado por comprar conosco! Volte sempre!!!',
+				[[{
+					label: 'Visitar nosso site',
+					command: 'filler',
+					url: 'https://www.avon.com.br/'
+				}]]
 			)
 		}
 
