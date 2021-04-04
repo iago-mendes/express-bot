@@ -45,7 +45,7 @@ const api =
 		return product
 	},
 	
-	calcularFrete: async (cep: string) =>
+	calcularFrete: (cep: string) =>
 	{
 		const lastDigit = Number(cep[cep.length-1])
 		const index = lastDigit % 2 === 0 ? 0 : 1
@@ -63,7 +63,18 @@ const api =
 			}))
 		
 		return shippingOptions
-	}
+	},
+
+	sendOrder: (cep: string, cart: Array<{quantity: number, product: Product}>) =>
+	{
+		const order =
+		{
+			cep,
+			cart
+		}
+
+		console.log('[order]', order)
+	},
 }
 
 export default api

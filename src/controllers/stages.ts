@@ -266,11 +266,10 @@ const stages =
 
 	checkout: async (text: string, update: Update, user: User) =>
 	{
-		const cart = await users.getCart(user)
-		users.remove(user)
-
 		if (text === '/cancelar')
 		{
+			users.remove(user)
+
 			return await bot.sendMessage(update,
 				'Poxa... Que pena! Seu pedido foi cancelado com sucesso!' +
 				'\n\n🤗 Espero te ver por aqui em breve!!!'
@@ -278,7 +277,15 @@ const stages =
 		}
 		else if (text === '/payed')
 		{
+			const cart = await users.getCart(user)
 			usersInfo.setPreviousCart(user.id, cart)
+
+			users.remove(user)
+
+			const cep = update.shipping_query
+				? update.shipping_query.shipping_address.post_code
+				: ''
+			apiVtex.sendOrder(cep, cart)
 
 			return await bot.sendMessage(update,
 				'Pedido confirmado com sucesso!' +
@@ -297,6 +304,7 @@ const stages =
 				'\nVocê precisa selecionar uma das opções abaixo. 😉'
 			)
 
+			const cart = await users.getCart(user)
 			await bot.sendPayment(update, cart)
 		}
 	}
