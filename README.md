@@ -40,3 +40,6 @@ O **Express Bot** é o vendedor online que guia de maneira simples, objetiva e i
 - Pesquisa inteligente
 - Visualização de imagens
 - Pagamento sem redirecionamento
+
+### :warning: Observação
+O **Express Bot** não utilizou o sistema de OMS da VTEX diretamente por um problema no `appToken` durante a BRASA Hacks. Embora ele tenha sido disponibilizado posteriormente, já não havia tempo hábil para alteração do projeto. Contudo, simulando uma situação real, criamos o arquivo `db/vtex.json` para simular as informações que deveriam ser passadas por requests HTTP com as APIs da VTEX, sendo que os nomes usados se assemelham aos do API Reference oferecido. Ainda assim, a criatividade e a aplicabilidade da solução usadas são únicas, como pode ser visto no vídeo de demonstração e no pitch enviado para organização.
