@@ -1,6 +1,6 @@
 # :robot: Express Bot
 
-![Express Bot logo](./public/logo.png)
+![Express Bot logo](./public/logo.svg)
 
 (descrição em português disponível abaixo)
 ## 🇺🇸 English description
