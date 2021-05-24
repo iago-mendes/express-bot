@@ -16,10 +16,8 @@ app.use(cors())
 app.use(express.json())
 
 mongoose.connect(
-	`mongodb://localhost:27017/${process.env.DB_NAME}?authSource=admin`,
+	String(process.env.MONGODB_URI),
 	{
-		user: process.env.DB_USER,
-		pass: process.env.DB_PWD,
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useFindAndModify: false,
@@ -35,5 +33,5 @@ app.use('/public', express.static(path.join(__dirname, '..', 'public')))
 
 app.use(errorHandler)
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 6262
 app.listen(port, () => console.log('server started at port', port))
