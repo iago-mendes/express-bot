@@ -172,7 +172,7 @@ const bot =
 		await api.post('sendInvoice',
 			{
 				chat_id: update.callback_query ? update.callback_query.message.chat.id : update.message.chat.id,
-				title: 'Pedido na BlitzServe',
+				title: 'Pedido na Avon',
 				description: truncateText(description, 255),
 				payload: 'payload',
 				provider_token: process.env.TELEGRAM_STRIPE_TOKEN,
