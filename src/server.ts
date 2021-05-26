@@ -29,7 +29,7 @@ mongoose.connection
 	.once('open', () => console.log('database connected'))
 	.on('error', error => console.log('[database connection error]:', error))
 
-bot.setWebhook()
+bot.getUpdates()
 app.use(routes)
 app.use('/public', express.static(path.join(__dirname, '..', 'public')))
 

@@ -1,9 +1,7 @@
 // controls actions of the telegram bot
-import { Request } from 'express'
-
 import Product from '../models/Product'
 import Update, {ShippingQuery, PreCheckoutQuery} from '../models/Update'
-import api from '../services/telegram/api'
+import api from '../services//telegram/api'
 import apiVtex from '../services/vtex/api'
 import formatPrice from '../utils/formatPrice'
 import truncateText from '../utils/truncateText'
@@ -12,26 +10,40 @@ import users from './users'
 
 const bot =
 {
-	setWebhook: async () =>
+	getUpdates: () =>
 	{
-		const data =
+		let offset: number | undefined = undefined
+
+		setInterval(() =>
 		{
-			url: `${process.env.API_URL}/${process.env.TELEGRAM_TOKEN}`
-		}
+			const data = offset
+				? {offset}
+				: {}
 
-		await api.post('setWebhook', data)
-	},
+			api.post('getUpdates', data)
+				.then(res =>
+				{
+					const update: Update = res.data.result[0]
+					if (update)
+					{
+						offset = update.update_id + 1
 
-	getUpdate: async (req: Request) =>
-	{
-		const update: Update = req.body
-
-		if (update.shipping_query)
-			return await bot.sendShippingInfo(update.shipping_query)
-		if (update.pre_checkout_query)
-			return await bot.confirmCheckout(update.pre_checkout_query)
-		
-		return await bot.checkStage(update)
+						if (update.shipping_query)
+							return bot.sendShippingInfo(update.shipping_query)
+						if (update.pre_checkout_query)
+							return bot.confirmCheckout(update.pre_checkout_query)
+						
+						bot.checkStage(update)
+					}
+				})
+				.catch(error =>
+				{
+					if (!error.response)
+						console.error('[error]', error)
+					else if (error.response.data.error_code !== 409)
+						console.error('[error]', error.response.data)
+				})
+		}, 3*1000)
 	},
 
 	checkStage: async (update: Update) =>
