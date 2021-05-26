@@ -8,6 +8,7 @@ import path from 'path'
 
 import errorHandler from './errors/handler'
 import bot from './controllers/bot'
+import routes from './routes'
 
 const app = express()
 dotenv.config()
@@ -29,6 +30,7 @@ mongoose.connection
 	.on('error', error => console.log('[database connection error]:', error))
 
 bot.setWebhook()
+app.use(routes)
 app.use('/public', express.static(path.join(__dirname, '..', 'public')))
 
 app.use(errorHandler)
