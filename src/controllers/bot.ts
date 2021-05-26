@@ -171,7 +171,7 @@ const bot =
 					label: 'Valor em produtos',
 					amount: Math.round(totalPrice * 100)
 				}],
-				photo_url: 'https://aexpress.iago-mendes.me/public/avon.png',
+				photo_url: `${process.env.API_URL}/public/avon.png`,
 				need_shipping_address: true,
 				is_flexible: true,
 				reply_markup:
